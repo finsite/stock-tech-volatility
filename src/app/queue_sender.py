@@ -1,5 +1,4 @@
-"""Module to publish processed analysis data to RabbitMQ or AWS SQS.
-"""
+"""Module to publish processed analysis data to RabbitMQ or AWS SQS."""
 
 import json
 import os
