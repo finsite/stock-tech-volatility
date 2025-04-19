@@ -12,7 +12,7 @@ import numpy as np  # Import numpy for numerical operations
 import pandas as pd  # Import pandas for data manipulation
 
 from app.logger import setup_logger  # Import logger setup function
-
+from app.output_handler import send_to_output
 # Set up a logger for this module
 logger = setup_logger(__name__)
 
