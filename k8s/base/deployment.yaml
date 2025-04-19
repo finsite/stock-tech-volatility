@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stock-tech-volatility
+  labels:
+    app: stock-tech-volatility
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stock-tech-volatility
+  template:
+    metadata:
+      labels:
+        app: stock-tech-volatility
+    spec:
+      containers:
+        - name: stock-tech-volatility
+          image: stock-tech-volatility:latest
+          ports:
+            - containerPort: 8080

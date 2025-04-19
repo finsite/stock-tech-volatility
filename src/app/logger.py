@@ -22,6 +22,7 @@ def setup_logger(name: str = "ichimoku") -> logging.Logger:
         This function sets up a logger with a standard format and INFO level.
         If the logger does not already have handlers, it will be configured.
         If the logger already has handlers, they will not be overridden.
+
     """
     logger: logging.Logger = logging.getLogger(name)
 

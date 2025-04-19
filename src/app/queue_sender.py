@@ -66,10 +66,13 @@ def _send_to_rabbitmq(data: dict[str, Any]) -> None:
     """Helper to send a message to RabbitMQ.
 
     Args:
+    ----
         data (dict[str, Any]): The message data to be sent, serialized as JSON.
 
     Returns:
+    -------
         None
+
     """
     try:
         # Establish a connection to RabbitMQ
@@ -100,10 +103,13 @@ def _send_to_sqs(data: dict[str, Any]) -> None:
     message.
 
     Args:
+    ----
         data (dict[str, Any]): The message data to be sent, serialized as JSON.
 
     Returns:
+    -------
         None
+
     """
     if not sqs_client or not SQS_QUEUE_URL:
         logger.error("SQS client is not initialized or missing SQS_QUEUE_URL")

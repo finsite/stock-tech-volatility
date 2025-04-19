@@ -47,13 +47,14 @@ if QUEUE_TYPE == "sqs":
 def connect_to_rabbitmq() -> pika.BlockingConnection:
     """Establishes a connection to RabbitMQ, retrying up to 5 times on failure.
 
-    Returns:
+    Returns
     -------
         pika.BlockingConnection: A connection object to interact with RabbitMQ.
 
-    Raises:
+    Raises
     ------
         ConnectionError: If unable to connect to RabbitMQ after retries.
+
     """
     retries: int = 5
     while retries > 0:
@@ -70,7 +71,7 @@ def connect_to_rabbitmq() -> pika.BlockingConnection:
             retries -= 1
             logger.warning("RabbitMQ connection failed: %s. Retrying in 5s...", e)
             time.sleep(5)
-    
+
     # Raise an error if all retries fail
     raise ConnectionError("Could not connect to RabbitMQ after retries")
 
@@ -86,9 +87,10 @@ def consume_rabbitmq() -> None:
     processing the message, it logs the error and either requeues the message
     or rejects it depending on the error.
 
-    Raises:
+    Raises
     ------
         ConnectionError: If unable to connect to RabbitMQ after retries.
+
     """
     connection: pika.BlockingConnection = connect_to_rabbitmq()
     channel: pika.channel.Channel = connection.channel()
@@ -100,7 +102,12 @@ def consume_rabbitmq() -> None:
         exchange=RABBITMQ_EXCHANGE, queue=RABBITMQ_QUEUE, routing_key=RABBITMQ_ROUTING_KEY
     )
 
-    def callback(ch: pika.channel.Channel, method: pika.spec.Basic.Deliver, properties: pika.spec.BasicProperties, body: bytes) -> None:
+    def callback(
+        ch: pika.channel.Channel,
+        method: pika.spec.Basic.Deliver,
+        properties: pika.spec.BasicProperties,
+        body: bytes,
+    ) -> None:
         """Callback for processing messages from RabbitMQ.
 
         Args:
@@ -150,9 +157,10 @@ def consume_sqs() -> None:
     message. If there is an error processing the message, it logs the error and
     retries.
 
-    Returns:
+    Returns
     -------
         None
+
     """
     if not sqs_client or not SQS_QUEUE_URL:
         logger.error("SQS not initialized or missing queue URL.")
@@ -197,9 +205,10 @@ def consume_messages() -> None:
     Selects the appropriate message consumer based on the environment variable
     QUEUE_TYPE, which should be either "rabbitmq" or "sqs".
 
-    Returns:
+    Returns
     -------
         None
+
     """
     if QUEUE_TYPE == "rabbitmq":
         consume_rabbitmq()  # Consume messages from RabbitMQ

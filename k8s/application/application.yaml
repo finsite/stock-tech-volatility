@@ -1,0 +1,19 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: stock-tech-volatility
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/your-org/stock-tech-volatility.git
+    targetRevision: HEAD
+    path: charts/stock-tech-volatility
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: default
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
