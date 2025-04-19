@@ -51,10 +51,7 @@ def connect_to_rabbitmq() -> pika.BlockingConnection:
     while retries > 0:
         try:
             conn = pika.BlockingConnection(
-                pika.ConnectionParameters(
-                    host=RABBITMQ_HOST,
-                    virtual_host=RABBITMQ_VHOST
-                )
+                pika.ConnectionParameters(host=RABBITMQ_HOST, virtual_host=RABBITMQ_VHOST)
             )
             if conn.is_open:
                 logger.info("Connected to RabbitMQ (vhost=%s)", RABBITMQ_VHOST)
@@ -74,9 +71,7 @@ def consume_rabbitmq() -> None:
     channel.exchange_declare(exchange=RABBITMQ_EXCHANGE, exchange_type="topic", durable=True)
     channel.queue_declare(queue=RABBITMQ_QUEUE, durable=True)
     channel.queue_bind(
-        exchange=RABBITMQ_EXCHANGE,
-        queue=RABBITMQ_QUEUE,
-        routing_key=RABBITMQ_ROUTING_KEY
+        exchange=RABBITMQ_EXCHANGE, queue=RABBITMQ_QUEUE, routing_key=RABBITMQ_ROUTING_KEY
     )
 
     def callback(ch, method, properties, body: bytes) -> None:
@@ -133,8 +128,7 @@ def consume_sqs() -> None:
                     send_to_output(result)
 
                     sqs_client.delete_message(
-                        QueueUrl=SQS_QUEUE_URL,
-                        ReceiptHandle=msg["ReceiptHandle"]
+                        QueueUrl=SQS_QUEUE_URL, ReceiptHandle=msg["ReceiptHandle"]
                     )
                     logger.info("Deleted SQS message: %s", msg["MessageId"])
                 except Exception as e:

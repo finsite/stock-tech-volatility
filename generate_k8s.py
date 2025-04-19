@@ -1,17 +1,21 @@
 import os
-import subprocess
 import shutil
+import subprocess
+
 
 def create_directory(path):
     os.makedirs(path, exist_ok=True)
 
+
 def get_app_name():
     return os.path.basename(os.getcwd())
+
 
 def write_file(path, content):
     create_directory(os.path.dirname(path))
     with open(path, "w", newline="\n") as f:
         f.write(content.strip() + "\n")
+
 
 def generate_all_templates(app_name):
     files = {
@@ -151,12 +155,13 @@ spec:
     automated:
       selfHeal: true
       prune: true
-"""
+""",
     }
 
     for path, content in files.items():
         write_file(path, content)
         print(f"✅ Created: {path}")
+
 
 def run_command_safe(cmd, desc):
     print(f"\n🔍 {desc}:")
@@ -166,6 +171,7 @@ def run_command_safe(cmd, desc):
         print(f"⚠️  Command failed: {cmd}\n{e}")
     except FileNotFoundError:
         print(f"⚠️  Command not found: {cmd.split()[0]}")
+
 
 def validate_files(app_name):
     helm_chart = f"charts/{app_name}"
@@ -181,6 +187,7 @@ def validate_files(app_name):
     else:
         print("ℹ️  yamllint not installed, skipping YAML lint checks")
 
+
 def main():
     app_name = get_app_name()
     print(f"🔧 Generating all manifests for app: {app_name}")
@@ -194,6 +201,7 @@ def main():
     print(" - k8s/overlays/dev/")
     print(" - k8s/application/")
     print("🧪 You can now commit or test with kubectl/ArgoCD.")
+
 
 if __name__ == "__main__":
     main()

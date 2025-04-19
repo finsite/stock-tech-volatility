@@ -5,6 +5,7 @@ This implementation logs the result and prints it to stdout.
 """
 
 import json
+
 from app.logger import setup_logger
 
 # Initialize logger

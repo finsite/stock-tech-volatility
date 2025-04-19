@@ -7,6 +7,7 @@ Donchian Channels, and Price %B.
 """
 
 from typing import Any
+
 import numpy as np
 import pandas as pd
 
@@ -15,7 +16,9 @@ from app.logger import setup_logger
 logger = setup_logger(__name__)
 
 
-def calculate_bollinger_bands(prices: list[float], window: int = 20, num_std: int = 2) -> dict[str, float]:
+def calculate_bollinger_bands(
+    prices: list[float], window: int = 20, num_std: int = 2
+) -> dict[str, float]:
     if len(prices) < window:
         raise ValueError("Not enough price data for Bollinger Bands calculation.")
     series = pd.Series(prices[-window:])
@@ -25,15 +28,19 @@ def calculate_bollinger_bands(prices: list[float], window: int = 20, num_std: in
         "sma": round(sma, 4),
         "upper_band": round(sma + num_std * std, 4),
         "lower_band": round(sma - num_std * std, 4),
-        "percent_b": round((series.iloc[-1] - (sma - num_std * std)) / (2 * num_std * std), 4)
+        "percent_b": round((series.iloc[-1] - (sma - num_std * std)) / (2 * num_std * std), 4),
     }
 
 
-def calculate_atr(highs: list[float], lows: list[float], closes: list[float], window: int = 14) -> float:
+def calculate_atr(
+    highs: list[float], lows: list[float], closes: list[float], window: int = 14
+) -> float:
     if len(closes) < window + 1:
         raise ValueError("Not enough data for ATR calculation.")
-    tr = [max(highs[i] - lows[i], abs(highs[i] - closes[i-1]), abs(lows[i] - closes[i-1]))
-          for i in range(1, window + 1)]
+    tr = [
+        max(highs[i] - lows[i], abs(highs[i] - closes[i - 1]), abs(lows[i] - closes[i - 1]))
+        for i in range(1, window + 1)
+    ]
     return round(np.mean(tr), 4)
 
 
@@ -46,11 +53,17 @@ def calculate_std(prices: list[float], window: int = 20) -> float:
 def calculate_historical_volatility(prices: list[float], window: int = 20) -> float:
     if len(prices) < window + 1:
         raise ValueError("Not enough data for historical volatility.")
-    log_returns = np.diff(np.log(prices[-(window + 1):]))
+    log_returns = np.diff(np.log(prices[-(window + 1) :]))
     return round(np.std(log_returns) * np.sqrt(252), 4)  # Annualized volatility
 
 
-def calculate_keltner_channels(highs: list[float], lows: list[float], closes: list[float], window: int = 20, factor: float = 2.0) -> dict[str, float]:
+def calculate_keltner_channels(
+    highs: list[float],
+    lows: list[float],
+    closes: list[float],
+    window: int = 20,
+    factor: float = 2.0,
+) -> dict[str, float]:
     if len(closes) < window or len(highs) < window or len(lows) < window:
         raise ValueError("Not enough data for Keltner Channels.")
     closes_series = pd.Series(closes[-window:])
@@ -59,7 +72,7 @@ def calculate_keltner_channels(highs: list[float], lows: list[float], closes: li
     return {
         "ema": round(ema, 4),
         "upper_channel": round(ema + factor * atr, 4),
-        "lower_channel": round(ema - factor * atr, 4)
+        "lower_channel": round(ema - factor * atr, 4),
     }
 
 
@@ -72,12 +85,14 @@ def calculate_chaikin_volatility(highs: list[float], lows: list[float], window: 
     return round(chaikin_vol.iloc[-1], 4)
 
 
-def calculate_donchian_channels(highs: list[float], lows: list[float], window: int = 20) -> dict[str, float]:
+def calculate_donchian_channels(
+    highs: list[float], lows: list[float], window: int = 20
+) -> dict[str, float]:
     if len(highs) < window or len(lows) < window:
         raise ValueError("Not enough data for Donchian Channels.")
     return {
         "upper_channel": round(max(highs[-window:]), 4),
-        "lower_channel": round(min(lows[-window:]), 4)
+        "lower_channel": round(min(lows[-window:]), 4),
     }
 
 

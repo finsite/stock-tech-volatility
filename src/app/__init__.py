@@ -6,4 +6,5 @@ This module provides the necessary components to:
 - Process volatility indicators (e.g., Bollinger Bands, ATR, etc.)
 - Output structured analysis results
 """
+
 __version__ = "0.1.0"

@@ -4,8 +4,9 @@ Module to publish processed analysis data to RabbitMQ or AWS SQS.
 
 import json
 import os
-import pika
+
 import boto3
+import pika
 from botocore.exceptions import BotoCoreError, NoCredentialsError
 
 from app.logger import setup_logger
@@ -57,10 +58,7 @@ def _send_to_rabbitmq(data: dict) -> None:
     """Helper to send a message to RabbitMQ."""
     try:
         connection = pika.BlockingConnection(
-            pika.ConnectionParameters(
-                host=RABBITMQ_HOST,
-                virtual_host=RABBITMQ_VHOST
-            )
+            pika.ConnectionParameters(host=RABBITMQ_HOST, virtual_host=RABBITMQ_VHOST)
         )
         channel = connection.channel()
 

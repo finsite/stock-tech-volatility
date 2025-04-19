@@ -4,8 +4,8 @@ Main application entry point for stock-tech-volatility.
 This module initializes logging and starts the queue message processing loop.
 """
 
-from app.queue_handler import consume_messages
 from app.logger import setup_logger
+from app.queue_handler import consume_messages
 
 # Set up logger for this module
 logger = setup_logger("main")
