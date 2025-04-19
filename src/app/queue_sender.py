@@ -1,5 +1,4 @@
-"""
-Module to publish processed analysis data to RabbitMQ or AWS SQS.
+"""Module to publish processed analysis data to RabbitMQ or AWS SQS.
 """
 
 import json
@@ -38,12 +37,21 @@ if QUEUE_TYPE == "sqs":
         sqs_client = None
 
 
-def publish_to_queue(payload: list[dict]) -> None:
-    """
-    Publishes the processed stock analysis results to RabbitMQ or SQS.
+def publish_to_queue(payload: list[dict[str, Any]]) -> None:
+    """Publishes the processed stock analysis results to RabbitMQ or SQS.
 
     Args:
-        payload (list[dict]): A list of dictionaries representing processed results.
+    ----
+        payload (list[dict[str, Any]]): A list of dictionaries representing processed results.
+            Each dictionary should contain the following keys:
+                'symbol': str, the stock symbol.
+                'analysis_type': str, the type of analysis performed.
+                'analysis_data': dict[str, Any], the results of the analysis.
+
+    Returns:
+    -------
+        None
+
     """
     for message in payload:
         if QUEUE_TYPE == "rabbitmq":
@@ -54,33 +62,56 @@ def publish_to_queue(payload: list[dict]) -> None:
             logger.error("Invalid QUEUE_TYPE specified. Use 'rabbitmq' or 'sqs'.")
 
 
-def _send_to_rabbitmq(data: dict) -> None:
-    """Helper to send a message to RabbitMQ."""
+def _send_to_rabbitmq(data: dict[str, Any]) -> None:
+    """Helper to send a message to RabbitMQ.
+
+    Args:
+        data (dict[str, Any]): The message data to be sent, serialized as JSON.
+
+    Returns:
+        None
+    """
     try:
-        connection = pika.BlockingConnection(
+        # Establish a connection to RabbitMQ
+        connection: pika.BlockingConnection = pika.BlockingConnection(
             pika.ConnectionParameters(host=RABBITMQ_HOST, virtual_host=RABBITMQ_VHOST)
         )
         channel = connection.channel()
 
+        # Publish the message to the specified exchange and routing key
         channel.basic_publish(
             exchange=RABBITMQ_EXCHANGE,
             routing_key=RABBITMQ_ROUTING_KEY,
             body=json.dumps(data),
         )
+
+        # Close the connection after publishing the message
         connection.close()
         logger.info("Published message to RabbitMQ")
     except Exception as e:
         logger.error("Failed to publish message to RabbitMQ: %s", e)
 
 
-def _send_to_sqs(data: dict) -> None:
-    """Helper to send a message to AWS SQS."""
+def _send_to_sqs(data: dict[str, Any]) -> None:
+    """Helper to send a message to AWS SQS.
+
+    If `sqs_client` is not initialized or `SQS_QUEUE_URL` is not set, a log
+    message is emitted and the function returns without attempting to send the
+    message.
+
+    Args:
+        data (dict[str, Any]): The message data to be sent, serialized as JSON.
+
+    Returns:
+        None
+    """
     if not sqs_client or not SQS_QUEUE_URL:
         logger.error("SQS client is not initialized or missing SQS_QUEUE_URL")
         return
 
     try:
-        response = sqs_client.send_message(
+        # Send the message to the specified SQS queue
+        response: dict[str, str] = sqs_client.send_message(
             QueueUrl=SQS_QUEUE_URL,
             MessageBody=json.dumps(data),
         )

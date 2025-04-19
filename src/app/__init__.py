@@ -1,5 +1,4 @@
-"""
-Stock Tech Volatility Analysis Package.
+"""Stock Tech Volatility Analysis Package.
 
 This module provides the necessary components to:
 - Consume input data from a queue (SQS or RabbitMQ)

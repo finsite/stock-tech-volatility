@@ -1,5 +1,4 @@
-"""
-Module to handle output of analysis results to a chosen output target.
+"""Module to handle output of analysis results to a chosen output target.
 
 This implementation logs the result and prints it to stdout.
 """
@@ -13,8 +12,7 @@ logger = setup_logger(__name__)
 
 
 def send_to_output(data: dict[str, any]) -> None:
-    """
-    Outputs processed analysis results to the configured output.
+    """Outputs processed analysis results to the configured output.
 
     Currently logs the output and prints it to the console.
     This function can be extended to push to a database, file, or external service.
@@ -26,6 +24,7 @@ def send_to_output(data: dict[str, any]) -> None:
     Returns:
     -------
         None
+
     """
     try:
         formatted_output: str = json.dumps(data, indent=4)

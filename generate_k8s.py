@@ -65,7 +65,7 @@ spec:
           ports:
             - containerPort: 8080
 """,
-        f"k8s/base/deployment.yaml": f"""\
+        "k8s/base/deployment.yaml": f"""\
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -89,7 +89,7 @@ spec:
           ports:
             - containerPort: 8080
 """,
-        f"k8s/base/service.yaml": f"""\
+        "k8s/base/service.yaml": f"""\
 ---
 apiVersion: v1
 kind: Service
@@ -103,7 +103,7 @@ spec:
       port: 80
       targetPort: 8080
 """,
-        f"k8s/base/kustomization.yaml": """\
+        "k8s/base/kustomization.yaml": """\
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
@@ -112,7 +112,7 @@ resources:
   - deployment.yaml
   - service.yaml
 """,
-        f"k8s/overlays/dev/kustomization.yaml": f"""\
+        "k8s/overlays/dev/kustomization.yaml": f"""\
 ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization

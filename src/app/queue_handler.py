@@ -1,5 +1,4 @@
-"""
-Handles message queue consumption for RabbitMQ and SQS.
+"""Handles message queue consumption for RabbitMQ and SQS.
 
 This module receives stock data, applies volatility analysis indicators,
 and sends the processed results to the output handler.
@@ -46,40 +45,77 @@ if QUEUE_TYPE == "sqs":
 
 
 def connect_to_rabbitmq() -> pika.BlockingConnection:
-    """Retries RabbitMQ connection up to 5 times before giving up."""
-    retries = 5
+    """Establishes a connection to RabbitMQ, retrying up to 5 times on failure.
+
+    Returns:
+    -------
+        pika.BlockingConnection: A connection object to interact with RabbitMQ.
+
+    Raises:
+    ------
+        ConnectionError: If unable to connect to RabbitMQ after retries.
+    """
+    retries: int = 5
     while retries > 0:
         try:
-            conn = pika.BlockingConnection(
+            # Attempt to establish a connection to RabbitMQ
+            connection: pika.BlockingConnection = pika.BlockingConnection(
                 pika.ConnectionParameters(host=RABBITMQ_HOST, virtual_host=RABBITMQ_VHOST)
             )
-            if conn.is_open:
+            if connection.is_open:
                 logger.info("Connected to RabbitMQ (vhost=%s)", RABBITMQ_VHOST)
-                return conn
+                return connection
         except Exception as e:
+            # Log the exception and retry after a delay
             retries -= 1
             logger.warning("RabbitMQ connection failed: %s. Retrying in 5s...", e)
             time.sleep(5)
+    
+    # Raise an error if all retries fail
     raise ConnectionError("Could not connect to RabbitMQ after retries")
 
 
 def consume_rabbitmq() -> None:
-    """Consume and process messages from RabbitMQ."""
-    connection = connect_to_rabbitmq()
-    channel = connection.channel()
+    """Consume and process messages from RabbitMQ.
 
+    This function connects to RabbitMQ, sets up an exchange, queue, and binding,
+    and starts consuming messages from the queue. When a message is received,
+    it attempts to parse the message as JSON and calls `analyze_volatility` to
+    process the message. If the processing is successful, it sends the result
+    to the output handler and acknowledges the message. If there is an error
+    processing the message, it logs the error and either requeues the message
+    or rejects it depending on the error.
+
+    Raises:
+    ------
+        ConnectionError: If unable to connect to RabbitMQ after retries.
+    """
+    connection: pika.BlockingConnection = connect_to_rabbitmq()
+    channel: pika.channel.Channel = connection.channel()
+
+    # Set up exchange, queue, and binding
     channel.exchange_declare(exchange=RABBITMQ_EXCHANGE, exchange_type="topic", durable=True)
     channel.queue_declare(queue=RABBITMQ_QUEUE, durable=True)
     channel.queue_bind(
         exchange=RABBITMQ_EXCHANGE, queue=RABBITMQ_QUEUE, routing_key=RABBITMQ_ROUTING_KEY
     )
 
-    def callback(ch, method, properties, body: bytes) -> None:
+    def callback(ch: pika.channel.Channel, method: pika.spec.Basic.Deliver, properties: pika.spec.BasicProperties, body: bytes) -> None:
+        """Callback for processing messages from RabbitMQ.
+
+        Args:
+        ----
+            ch (pika.channel.Channel): The channel object.
+            method (pika.spec.Basic.Deliver): The message delivery object.
+            properties (pika.spec.BasicProperties): The message properties.
+            body (bytes): The message body as bytes.
+
+        """
         try:
-            message = json.loads(body)
+            message: dict[str, Any] = json.loads(body)
             logger.info("Received message: %s", message)
 
-            result = analyze_volatility(message["symbol"], message["data"])
+            result: dict[str, Any] = analyze_volatility(message["symbol"], message["data"])
             send_to_output(result)
 
             ch.basic_ack(delivery_tag=method.delivery_tag)
@@ -90,6 +126,7 @@ def consume_rabbitmq() -> None:
             logger.error("Error processing message: %s", e)
             ch.basic_nack(delivery_tag=method.delivery_tag, requeue=True)
 
+    # Start consuming messages from the queue
     channel.basic_consume(queue=RABBITMQ_QUEUE, on_message_callback=callback)
     logger.info("Waiting for messages from RabbitMQ...")
 
@@ -104,7 +141,19 @@ def consume_rabbitmq() -> None:
 
 
 def consume_sqs() -> None:
-    """Consume and process messages from AWS SQS."""
+    """Consume and process messages from AWS SQS.
+
+    This function continuously polls for messages in the configured SQS queue.
+    When a message is received, it attempts to parse the message as JSON and
+    calls `analyze_volatility` to process the message. If the processing is
+    successful, it sends the result to the output handler and deletes the SQS
+    message. If there is an error processing the message, it logs the error and
+    retries.
+
+    Returns:
+    -------
+        None
+    """
     if not sqs_client or not SQS_QUEUE_URL:
         logger.error("SQS not initialized or missing queue URL.")
         return
@@ -113,7 +162,7 @@ def consume_sqs() -> None:
 
     while True:
         try:
-            response = sqs_client.receive_message(
+            response: dict = sqs_client.receive_message(
                 QueueUrl=SQS_QUEUE_URL,
                 MaxNumberOfMessages=10,
                 WaitTimeSeconds=10,
@@ -121,16 +170,20 @@ def consume_sqs() -> None:
 
             for msg in response.get("Messages", []):
                 try:
-                    body = json.loads(msg["Body"])
+                    body: dict = json.loads(msg["Body"])
                     logger.info("Received SQS message: %s", body)
 
-                    result = analyze_volatility(body["symbol"], body["data"])
+                    # Process the message
+                    result: dict = analyze_volatility(body["symbol"], body["data"])
                     send_to_output(result)
 
+                    # Delete the message from SQS
                     sqs_client.delete_message(
                         QueueUrl=SQS_QUEUE_URL, ReceiptHandle=msg["ReceiptHandle"]
                     )
                     logger.info("Deleted SQS message: %s", msg["MessageId"])
+                except json.JSONDecodeError:
+                    logger.error("Invalid JSON: %s", msg["Body"])
                 except Exception as e:
                     logger.error("Error processing SQS message: %s", e)
         except Exception as e:
@@ -139,10 +192,18 @@ def consume_sqs() -> None:
 
 
 def consume_messages() -> None:
-    """Starts the appropriate message consumer based on QUEUE_TYPE."""
+    """Starts the appropriate message consumer based on QUEUE_TYPE.
+
+    Selects the appropriate message consumer based on the environment variable
+    QUEUE_TYPE, which should be either "rabbitmq" or "sqs".
+
+    Returns:
+    -------
+        None
+    """
     if QUEUE_TYPE == "rabbitmq":
-        consume_rabbitmq()
+        consume_rabbitmq()  # Consume messages from RabbitMQ
     elif QUEUE_TYPE == "sqs":
-        consume_sqs()
+        consume_sqs()  # Consume messages from SQS
     else:
         logger.error("Invalid QUEUE_TYPE specified. Use 'rabbitmq' or 'sqs'.")
