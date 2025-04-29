@@ -2,7 +2,8 @@
 
 ## Overview
 
-This is a generic template for a Python application. Please update the details as necessary to fit your project.
+This is a generic template for a Python application. Please update the details
+as necessary to fit your project.
 
 ## Getting Started
 
@@ -13,9 +14,11 @@ Provide a brief description of the application and its purpose.
 List any prerequisites needed to run the application.
 
 ```markdown
-Each script supports error logging by default. This feature is optional and can be enabled for debugging purposes.
+Each script supports error logging by default. This feature is optional and can
+be enabled for debugging purposes.
 
-Example files are included with each script. Use the command `get-help <scriptname>` to view examples.
+Example files are included with each script. Use the command
+`get-help <scriptname>` to view examples.
 ```
 
 ## Installation
@@ -43,7 +46,8 @@ Explain how to execute the tests for the application.
 
 ## Deployment
 
-Document the deployment process, including any required parameters and instructions.
+Document the deployment process, including any required parameters and
+instructions.
 
 ## Built With
 
@@ -51,7 +55,8 @@ Document the deployment process, including any required parameters and instructi
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit issues or pull requests for improvements.
+Contributions are welcome! Please feel free to submit issues or pull requests
+for improvements.
 
 ## Authors
 

@@ -1,5 +1,4 @@
-"""
-The module implements a rate limiter for API requests.
+"""The module implements a rate limiter for API requests.
 
 The `RateLimiter` class uses the token bucket algorithm to manage the request rate.
 It is thread-safe and can be used to limit the request rate for a single API or
@@ -19,15 +18,13 @@ logger = setup_logger(__name__)
 
 
 class RateLimiter:
-    """
-    A rate limiter based on the token bucket algorithm.
+    """A rate limiter based on the token bucket algorithm.
 
     Allows a specified number of requests within a time window.
     """
 
     def __init__(self, max_requests: int, time_window: float) -> None:
-        """
-        Initialize the RateLimiter.
+        """Initialize the RateLimiter.
 
         The constructor takes in the maximum number of requests allowed within a
         specified time window and initializes the internal state of the rate
@@ -41,6 +38,7 @@ class RateLimiter:
         Returns:
         -------
             None
+
         """
         self._max_requests = max_requests
         self._time_window = time_window
@@ -49,8 +47,7 @@ class RateLimiter:
         self._last_check = time.time()
 
     def acquire(self, context: str = "RateLimiter") -> None:
-        """
-        Acquire permission to proceed with a request. Blocks if the rate limit is
+        """Acquire permission to proceed with a request. Blocks if the rate limit is
         exceeded.
 
         Args:
@@ -61,6 +58,7 @@ class RateLimiter:
         Returns:
         -------
             None
+
         """
         with self._lock:  # type: ignore # type: threading.Lock
             current_time: float = time.time()

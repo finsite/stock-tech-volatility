@@ -1,5 +1,4 @@
-"""
-Tracks metrics for individual API requests.
+"""Tracks metrics for individual API requests.
 
 This function logs the result of API request operations, including the symbol,
 rate limit, and whether the request was successful or not.
@@ -17,8 +16,7 @@ def track_request_metrics(
     time_window: float,
     success: bool = True,
 ) -> None:
-    """
-    Tracks metrics for individual API requests.
+    """Tracks metrics for individual API requests.
 
     Args:
     ----
@@ -26,6 +24,7 @@ def track_request_metrics(
         rate_limit (int): The number of allowed requests.
         time_window (float): The rate limit window in seconds.
         success (bool): Whether the request was successful.
+
     """
     status = "success" if success else "failure"
     message = (

@@ -1,5 +1,4 @@
-"""
-Configure and return a logger for the application.
+"""Configure and return a logger for the application.
 
 This module provides a function to configure and return a logger instance with a
 specified name and logging level.
@@ -9,8 +8,7 @@ import logging
 
 
 def setup_logger(name: str | None = None, level: int = logging.INFO) -> logging.Logger:
-    """
-    Configure and return a logger for the application.
+    """Configure and return a logger for the application.
 
     Logs messages to the console using a StreamHandler and a specified format.
     If the logger already exists, it reuses the existing instance.
@@ -23,6 +21,7 @@ def setup_logger(name: str | None = None, level: int = logging.INFO) -> logging.
     Returns:
     -------
         logging.Logger: Configured logger instance.
+
     """
     logger_name = name or "poller"
     logger = logging.getLogger(logger_name)
