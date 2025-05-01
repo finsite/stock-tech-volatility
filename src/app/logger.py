@@ -1,4 +1,5 @@
-"""Module to handle logging for Ichimoku Analysis Service.
+"""
+Module to handle logging for Ichimoku Analysis Service.
 
 This module sets up a logger with a standard format and INFO level.
 """
@@ -7,7 +8,8 @@ import logging
 
 
 def setup_logger(name: str = "ichimoku") -> logging.Logger:
-    """Sets up a logger with a standard format and INFO level.
+    """
+    Sets up a logger with a standard format and INFO level.
 
     Args:
     ----
@@ -22,7 +24,6 @@ def setup_logger(name: str = "ichimoku") -> logging.Logger:
         This function sets up a logger with a standard format and INFO level.
         If the logger does not already have handlers, it will be configured.
         If the logger already has handlers, they will not be overridden.
-
     """
     logger: logging.Logger = logging.getLogger(name)
 

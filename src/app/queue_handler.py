@@ -1,7 +1,8 @@
-"""Handles message queue consumption for RabbitMQ and SQS.
+"""
+Handles message queue consumption for RabbitMQ and SQS.
 
-This module receives stock data, applies volatility analysis indicators,
-and sends the processed results to the output handler.
+This module receives stock data, applies volatility analysis indicators, and sends the
+processed results to the output handler.
 """
 
 import json
@@ -45,7 +46,8 @@ if QUEUE_TYPE == "sqs":
 
 
 def connect_to_rabbitmq() -> pika.BlockingConnection:
-    """Establishes a connection to RabbitMQ, retrying up to 5 times on failure.
+    """
+    Establishes a connection to RabbitMQ, retrying up to 5 times on failure.
 
     Returns
     -------
@@ -54,7 +56,6 @@ def connect_to_rabbitmq() -> pika.BlockingConnection:
     Raises
     ------
         ConnectionError: If unable to connect to RabbitMQ after retries.
-
     """
     retries: int = 5
     while retries > 0:
@@ -77,7 +78,8 @@ def connect_to_rabbitmq() -> pika.BlockingConnection:
 
 
 def consume_rabbitmq() -> None:
-    """Consume and process messages from RabbitMQ.
+    """
+    Consume and process messages from RabbitMQ.
 
     This function connects to RabbitMQ, sets up an exchange, queue, and binding,
     and starts consuming messages from the queue. When a message is received,
@@ -90,7 +92,6 @@ def consume_rabbitmq() -> None:
     Raises
     ------
         ConnectionError: If unable to connect to RabbitMQ after retries.
-
     """
     connection: pika.BlockingConnection = connect_to_rabbitmq()
     channel: pika.channel.Channel = connection.channel()
@@ -108,7 +109,8 @@ def consume_rabbitmq() -> None:
         properties: pika.spec.BasicProperties,
         body: bytes,
     ) -> None:
-        """Callback for processing messages from RabbitMQ.
+        """
+        Callback for processing messages from RabbitMQ.
 
         Args:
         ----
@@ -116,7 +118,6 @@ def consume_rabbitmq() -> None:
             method (pika.spec.Basic.Deliver): The message delivery object.
             properties (pika.spec.BasicProperties): The message properties.
             body (bytes): The message body as bytes.
-
         """
         try:
             message: dict[str, Any] = json.loads(body)
@@ -148,7 +149,8 @@ def consume_rabbitmq() -> None:
 
 
 def consume_sqs() -> None:
-    """Consume and process messages from AWS SQS.
+    """
+    Consume and process messages from AWS SQS.
 
     This function continuously polls for messages in the configured SQS queue.
     When a message is received, it attempts to parse the message as JSON and
@@ -160,7 +162,6 @@ def consume_sqs() -> None:
     Returns
     -------
         None
-
     """
     if not sqs_client or not SQS_QUEUE_URL:
         logger.error("SQS not initialized or missing queue URL.")
@@ -200,7 +201,8 @@ def consume_sqs() -> None:
 
 
 def consume_messages() -> None:
-    """Starts the appropriate message consumer based on QUEUE_TYPE.
+    """
+    Starts the appropriate message consumer based on QUEUE_TYPE.
 
     Selects the appropriate message consumer based on the environment variable
     QUEUE_TYPE, which should be either "rabbitmq" or "sqs".
@@ -208,7 +210,6 @@ def consume_messages() -> None:
     Returns
     -------
         None
-
     """
     if QUEUE_TYPE == "rabbitmq":
         consume_rabbitmq()  # Consume messages from RabbitMQ

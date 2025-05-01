@@ -40,7 +40,8 @@ if QUEUE_TYPE == "sqs":
 
 
 def publish_to_queue(payload: list[dict[str, Any]]) -> None:
-    """Publishes the processed stock analysis results to RabbitMQ or SQS.
+    """
+    Publishes the processed stock analysis results to RabbitMQ or SQS.
 
     Args:
     ----
@@ -49,7 +50,6 @@ def publish_to_queue(payload: list[dict[str, Any]]) -> None:
                 'symbol': str, the stock symbol.
                 'analysis_type': str, the type of analysis performed.
                 'analysis_data': dict[str, Any], the results of the analysis.
-
     """
     for message in payload:
         if QUEUE_TYPE == "rabbitmq":
@@ -61,12 +61,12 @@ def publish_to_queue(payload: list[dict[str, Any]]) -> None:
 
 
 def _send_to_rabbitmq(data: dict[str, Any]) -> None:
-    """Helper to send a message to RabbitMQ.
+    """
+    Helper to send a message to RabbitMQ.
 
     Args:
     ----
         data (dict[str, Any]): The message data to be sent, serialized as JSON.
-
     """
     try:
         credentials = pika.PlainCredentials(RABBITMQ_USER, RABBITMQ_PASSWORD)
@@ -92,12 +92,12 @@ def _send_to_rabbitmq(data: dict[str, Any]) -> None:
 
 
 def _send_to_sqs(data: dict[str, Any]) -> None:
-    """Helper to send a message to AWS SQS.
+    """
+    Helper to send a message to AWS SQS.
 
     Args:
     ----
         data (dict[str, Any]): The message data to be sent, serialized as JSON.
-
     """
     if not sqs_client or not SQS_QUEUE_URL:
         logger.error("SQS client is not initialized or missing SQS_QUEUE_URL")

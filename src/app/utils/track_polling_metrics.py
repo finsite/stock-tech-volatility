@@ -1,4 +1,5 @@
-"""Tracks metrics for polling operations.
+"""
+Tracks metrics for polling operations.
 
 This function logs the result of polling operations, including the source of the data
 and the symbol being polled. It also raises a ValueError if the status is not 'success'
@@ -14,7 +15,8 @@ logger = setup_logger(__name__)
 
 
 def track_polling_metrics(status: Literal["success", "failure"], source: str, symbol: str) -> None:
-    """Tracks metrics for polling operations.
+    """
+    Tracks metrics for polling operations.
 
     Args:
     ----
@@ -25,7 +27,6 @@ def track_polling_metrics(status: Literal["success", "failure"], source: str, sy
     Raises:
     ------
         ValueError: If the status is not 'success' or 'failure'.
-
     """
     # Validate status
     if status not in {"success", "failure"}:

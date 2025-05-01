@@ -1,9 +1,9 @@
-"""Processor module for volatility analysis.
+"""
+Processor module for volatility analysis.
 
-This module provides functions to calculate various volatility indicators
-used in stock market analysis. These include Bollinger Bands, ATR, historical
-volatility, standard deviation, Keltner Channels, Chaikin Volatility,
-Donchian Channels, and Price %B.
+This module provides functions to calculate various volatility indicators used in stock
+market analysis. These include Bollinger Bands, ATR, historical volatility, standard
+deviation, Keltner Channels, Chaikin Volatility, Donchian Channels, and Price %B.
 """
 
 from typing import Any  # Import Any for type annotations
@@ -20,7 +20,8 @@ logger = setup_logger(__name__)
 def calculate_bollinger_bands(
     prices: list[float], window: int = 20, num_std: int = 2
 ) -> dict[str, float]:
-    """Calculate Bollinger Bands for given stock prices.
+    """
+    Calculate Bollinger Bands for given stock prices.
 
     Bollinger Bands are a volatility indicator. They consist of a moving average
     and two standard deviations plotted around it. The upper band is the moving
@@ -43,7 +44,6 @@ def calculate_bollinger_bands(
             - lower_band (float): The lower Bollinger Band.
             - percent_b (float): The percent the current price is above the lower Bollinger
                                  Band.
-
     """
     if len(prices) < window:
         raise ValueError("Not enough price data for Bollinger Bands calculation.")
@@ -61,7 +61,8 @@ def calculate_bollinger_bands(
 def calculate_atr(
     highs: list[float], lows: list[float], closes: list[float], window: int = 14
 ) -> float:
-    """Calculate the Average True Range (ATR) for given stock prices.
+    """
+    Calculate the Average True Range (ATR) for given stock prices.
 
     ATR is a measure of volatility. It is the moving average of the true range
     over a given period.
@@ -76,7 +77,6 @@ def calculate_atr(
     Returns
     -------
         float: The ATR for the given period.
-
     """
     if len(closes) < window + 1:
         raise ValueError("Not enough data for ATR calculation.")
@@ -97,7 +97,8 @@ def calculate_std(
     prices: list[float],  # A list of prices to calculate the standard deviation for.
     window: int = 20,  # The number of prices to use for the calculation. Defaults to 20.
 ) -> float:  # The standard deviation of the given prices.
-    """Calculate the standard deviation of a given list of prices.
+    """
+    Calculate the standard deviation of a given list of prices.
 
     Parameters
     ----------
@@ -111,7 +112,6 @@ def calculate_std(
     Raises
     ------
         ValueError: If there is not enough data for the calculation.
-
     """
     if len(prices) < window:
         raise ValueError("Not enough data for standard deviation.")
@@ -122,7 +122,8 @@ def calculate_historical_volatility(
     prices: List[float],  # A list of prices to calculate the historical volatility for.
     window: int = 20,  # The number of prices to use for the calculation. Defaults to 20.
 ) -> float:  # The historical volatility of the given prices.
-    """Calculate the historical volatility of a stock using the given prices.
+    """
+    Calculate the historical volatility of a stock using the given prices.
 
     Parameters
     ----------
@@ -136,7 +137,6 @@ def calculate_historical_volatility(
     Raises
     ------
         ValueError: If there is not enough data for the calculation.
-
     """
     if len(prices) < window + 1:
         raise ValueError("Not enough data for historical volatility.")
@@ -154,7 +154,8 @@ def calculate_keltner_channels(
     window: int = 20,  # The number of days to use for the moving average and ATR. Defaults to 20.
     factor: float = 2.0,  # The factor to multiply the ATR by. Defaults to 2.0.
 ) -> Dict[str, float]:  # A dictionary with the following keys:
-    """Calculate Keltner Channels for given stock prices.
+    """
+    Calculate Keltner Channels for given stock prices.
 
     Keltner Channels are a volatility indicator. They consist of a center line
     (usually the Exponential Moving Average (EMA)) and two channels plotted
@@ -177,7 +178,6 @@ def calculate_keltner_channels(
             - ema (float): The Exponential Moving Average of the closes.
             - upper_channel (float): The upper Keltner Channel.
             - lower_channel (float): The lower Keltner Channel.
-
     """
     if len(closes) < window or len(highs) < window or len(lows) < window:
         raise ValueError("Not enough data for Keltner Channels.")
@@ -192,7 +192,8 @@ def calculate_keltner_channels(
 
 
 def calculate_chaikin_volatility(highs: list[float], lows: list[float], window: int = 10) -> float:
-    """Calculate the Chaikin Volatility indicator for given stock prices.
+    """
+    Calculate the Chaikin Volatility indicator for given stock prices.
 
     The Chaikin Volatility indicator is a measure of volatility introduced by
     Marc Chaikin. It is calculated by taking the difference between two moving
@@ -209,7 +210,6 @@ def calculate_chaikin_volatility(highs: list[float], lows: list[float], window: 
     Returns
     -------
         float: The Chaikin Volatility indicator.
-
     """
     if len(highs) < window * 2 or len(lows) < window * 2:
         raise ValueError("Not enough data for Chaikin Volatility.")
@@ -225,7 +225,8 @@ def calculate_chaikin_volatility(highs: list[float], lows: list[float], window: 
 def calculate_donchian_channels(
     highs: list[float], lows: list[float], window: int = 20
 ) -> dict[str, float]:
-    """Calculate the Donchian Channels for given stock prices.
+    """
+    Calculate the Donchian Channels for given stock prices.
 
     The Donchian Channels are a measure of volatility introduced by Richard
     Donchian. They are calculated by taking the highest high and lowest low
@@ -242,7 +243,6 @@ def calculate_donchian_channels(
     -------
         dict[str, float]: A dictionary containing the upper and lower
                           channels.
-
     """
     if len(highs) < window or len(lows) < window:
         raise ValueError("Not enough data for Donchian Channels.")
@@ -256,7 +256,8 @@ def analyze_volatility(
     symbol: str,  # Stock symbol.
     data: dict[str, Any],  # Must include 'close_prices', 'highs', and 'lows'.
 ) -> dict[str, Any]:  # Analysis results.
-    """Applies volatility analysis to incoming stock data.
+    """
+    Applies volatility analysis to incoming stock data.
 
     Args:
     ----
@@ -266,7 +267,6 @@ def analyze_volatility(
     Returns:
     -------
         dict[str, Any]: Analysis results.
-
     """
     try:
         logger.info("Analyzing volatility for %s", symbol)
