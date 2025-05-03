@@ -2,7 +2,6 @@
 
 import json
 import os
-from typing import Any
 
 import boto3
 import pika
@@ -19,7 +18,7 @@ QUEUE_TYPE = os.getenv("QUEUE_TYPE", "rabbitmq").lower()
 # RabbitMQ config
 RABBITMQ_HOST = os.getenv("RABBITMQ_HOST", "localhost")
 RABBITMQ_EXCHANGE = os.getenv("RABBITMQ_EXCHANGE", "stock_analysis")
-RABBITMQ_ROUTING_KEY = os.getenv("RABBITMQ_ROUTING_KEY", "volatility")
+RABBITMQ_ROUTING_KEY = os.getenv("RABBITMQ_ROUTING_KEY", "candlestick")
 RABBITMQ_VHOST = os.getenv("RABBITMQ_VHOST", "/")
 RABBITMQ_USER = os.getenv("RABBITMQ_USER", "guest")
 RABBITMQ_PASSWORD = os.getenv("RABBITMQ_PASSWORD", "guest")
@@ -39,17 +38,12 @@ if QUEUE_TYPE == "sqs":
         sqs_client = None
 
 
-def publish_to_queue(payload: list[dict[str, Any]]) -> None:
+def publish_to_queue(payload: list[dict]) -> None:
     """
     Publishes the processed stock analysis results to RabbitMQ or SQS.
 
     Args:
-    ----
-        payload (list[dict[str, Any]]): A list of dictionaries representing processed results.
-            Each dictionary should contain the following keys:
-                'symbol': str, the stock symbol.
-                'analysis_type': str, the type of analysis performed.
-                'analysis_data': dict[str, Any], the results of the analysis.
+        payload (list[dict]): A list of dictionaries representing processed results.
     """
     for message in payload:
         if QUEUE_TYPE == "rabbitmq":
@@ -60,14 +54,8 @@ def publish_to_queue(payload: list[dict[str, Any]]) -> None:
             logger.error("Invalid QUEUE_TYPE specified. Use 'rabbitmq' or 'sqs'.")
 
 
-def _send_to_rabbitmq(data: dict[str, Any]) -> None:
-    """
-    Helper to send a message to RabbitMQ.
-
-    Args:
-    ----
-        data (dict[str, Any]): The message data to be sent, serialized as JSON.
-    """
+def _send_to_rabbitmq(data: dict) -> None:
+    """Helper to send a message to RabbitMQ."""
     try:
         credentials = pika.PlainCredentials(RABBITMQ_USER, RABBITMQ_PASSWORD)
         connection = pika.BlockingConnection(
@@ -84,21 +72,14 @@ def _send_to_rabbitmq(data: dict[str, Any]) -> None:
             routing_key=RABBITMQ_ROUTING_KEY,
             body=json.dumps(data),
         )
-
         connection.close()
         logger.info("Published message to RabbitMQ")
     except Exception as e:
         logger.error("Failed to publish message to RabbitMQ: %s", e)
 
 
-def _send_to_sqs(data: dict[str, Any]) -> None:
-    """
-    Helper to send a message to AWS SQS.
-
-    Args:
-    ----
-        data (dict[str, Any]): The message data to be sent, serialized as JSON.
-    """
+def _send_to_sqs(data: dict) -> None:
+    """Helper to send a message to AWS SQS."""
     if not sqs_client or not SQS_QUEUE_URL:
         logger.error("SQS client is not initialized or missing SQS_QUEUE_URL")
         return
