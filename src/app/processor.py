@@ -313,6 +313,14 @@ logger = setup_logger(__name__)
 def calculate_bollinger_bands(
     prices: list[float], window: int = 20, num_std: int = 2
 ) -> dict[str, float]:
+    """Args:
+      prices: list[float]:
+      window: int:  (Default value = 20)
+      num_std: int:  (Default value = 2)
+
+    Returns:
+
+    """
     if len(prices) < window:
         raise ValueError("Not enough price data for Bollinger Bands calculation.")
     series = pd.Series(prices[-window:])
@@ -329,6 +337,15 @@ def calculate_bollinger_bands(
 def calculate_atr(
     highs: list[float], lows: list[float], closes: list[float], window: int = 14
 ) -> float:
+    """Args:
+      highs: list[float]:
+      lows: list[float]:
+      closes: list[float]:
+      window: int:  (Default value = 14)
+
+    Returns:
+
+    """
     if len(closes) < window + 1:
         raise ValueError("Not enough data for ATR calculation.")
     tr = [
@@ -339,12 +356,26 @@ def calculate_atr(
 
 
 def calculate_std(prices: list[float], window: int = 20) -> float:
+    """Args:
+      prices: list[float]:
+      window: int:  (Default value = 20)
+
+    Returns:
+
+    """
     if len(prices) < window:
         raise ValueError("Not enough data for standard deviation.")
     return round(float(np.std(prices[-window:])), 4)
 
 
 def calculate_historical_volatility(prices: list[float], window: int = 20) -> float:
+    """Args:
+      prices: list[float]:
+      window: int:  (Default value = 20)
+
+    Returns:
+
+    """
     if len(prices) < window + 1:
         raise ValueError("Not enough data for historical volatility.")
     log_returns = np.diff(np.log(prices[-(window + 1) :]))
@@ -358,6 +389,16 @@ def calculate_keltner_channels(
     window: int = 20,
     factor: float = 2.0,
 ) -> dict[str, float]:
+    """Args:
+      highs: list[float]:
+      lows: list[float]:
+      closes: list[float]:
+      window: int:  (Default value = 20)
+      factor: float:  (Default value = 2.0)
+
+    Returns:
+
+    """
     if len(closes) < window or len(highs) < window or len(lows) < window:
         raise ValueError("Not enough data for Keltner Channels.")
     closes_series = pd.Series(closes[-window:])
@@ -371,6 +412,14 @@ def calculate_keltner_channels(
 
 
 def calculate_chaikin_volatility(highs: list[float], lows: list[float], window: int = 10) -> float:
+    """Args:
+      highs: list[float]:
+      lows: list[float]:
+      window: int:  (Default value = 10)
+
+    Returns:
+
+    """
     if len(highs) < window * 2 or len(lows) < window * 2:
         raise ValueError("Not enough data for Chaikin Volatility.")
     hl_range = pd.Series([h - l for h, l in zip(highs, lows)])
@@ -382,6 +431,14 @@ def calculate_chaikin_volatility(highs: list[float], lows: list[float], window: 
 def calculate_donchian_channels(
     highs: list[float], lows: list[float], window: int = 20
 ) -> dict[str, float]:
+    """Args:
+      highs: list[float]:
+      lows: list[float]:
+      window: int:  (Default value = 20)
+
+    Returns:
+
+    """
     if len(highs) < window or len(lows) < window:
         raise ValueError("Not enough data for Donchian Channels.")
     return {
@@ -391,6 +448,14 @@ def calculate_donchian_channels(
 
 
 def calculate_price_percent_b(prices: list[float], window: int = 20, num_std: int = 2) -> float:
+    """Args:
+      prices: list[float]:
+      window: int:  (Default value = 20)
+      num_std: int:  (Default value = 2)
+
+    Returns:
+
+    """
     if len(prices) < window:
         raise ValueError("Not enough data for %B calculation.")
     series = pd.Series(prices[-window:])
@@ -402,6 +467,14 @@ def calculate_price_percent_b(prices: list[float], window: int = 20, num_std: in
 
 
 def analyze_volatility(symbol: str, data: dict[str, Any]) -> dict[str, Any]:
+    """Args:
+      symbol: str:
+      data: dict[str:
+      Any]:
+
+    Returns:
+
+    """
     try:
         logger.info("Analyzing volatility for %s", symbol)
 

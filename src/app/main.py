@@ -18,6 +18,10 @@ def main() -> None:
     This function will block until the user stops the service (e.g. Ctrl-C).
 
     :return: None
+
+    Args:
+
+    Returns:
     """
     logger.info("Starting stock-tech-volatility processor...")
 
