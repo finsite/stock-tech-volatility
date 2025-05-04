@@ -300,7 +300,7 @@ Provides functions for Bollinger Bands, ATR, Historical Volatility, Standard Dev
 Keltner Channels, Chaikin Volatility, Donchian Channels, and Price %B.
 """
 
-from typing import Any, Dict, List
+from typing import Any
 
 import numpy as np
 import pandas as pd
