@@ -6,6 +6,12 @@
 - Added pylintrc (Mark Quinn)
 - bump: patch version + changelog [skip ci] (github-actions[bot])
 
+## v0.3.0 (2025-05-05)
+
+### Feat
+
+- **docs**: Added automated releases
+
 ## v0.2.0 (2025-05-05)
 
 ## v0.1.39 (2025-05-05)
