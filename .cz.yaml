@@ -1,16 +1,15 @@
+---
 name: cz_conventional_commits
 version: 0.1.0
 tag_format: v$version
 update_changelog_on_bump: true
 changelog_file: CHANGELOG.md
 commit_parser: cz.conventional_commits
-
 info:
   title: Conventional Commits
   description: Standardized commit format across stock-* repos
   message: 'Write your commit message using the prompts below:'
   example: 'feat(queue): support fallback from SQS to RabbitMQ'
-
   types:
     - type: feat
       description: A new feature
@@ -39,7 +38,6 @@ info:
     - type: build
       description: Changes to packaging/build system
       emoji: 📦
-
   scopes:
     # 🧠 Core Logic
     - pollers

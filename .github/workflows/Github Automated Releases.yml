@@ -1,30 +1,23 @@
+---
 name: GitHub Automated Releases
-
 on:
   push:
-    tags:
-      - 'v*'  
-
+    tags: [v*]
 permissions:
   contents: write
-
 jobs:
   release:
     name: Create GitHub Release
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
       - name: Install Commitizen
         run: pip install commitizen
-
       - name: Generate changelog section for this tag
         id: changelog
         run: |
@@ -33,7 +26,6 @@ jobs:
           echo "CHANGELOG<<EOF" >> $GITHUB_OUTPUT
           cat changelog.md >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
-
       - name: Create GitHub release
         uses: softprops/action-gh-release@v1
         with:

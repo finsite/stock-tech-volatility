@@ -3,23 +3,19 @@ site_name: Stock-Tech-Volatility
 site_description: Documentation for the Stock-Tech-Volatility Project
 site_author: Mark Quinn
 repo_url: https://github.com/finsite/stock-tech-volatility
-
 theme:
   name: material
-
 nav:
   - Home: index.md
   - API Reference: api.md
   - More Details: more-details.md
   - Other Topic: other-topic.md
-
 plugins:
   - search
   - mkdocstrings:
       handlers:
         python:
-          paths: ["src"]
-
+          paths: [src]
 markdown_extensions:
   - admonition
   - toc:
