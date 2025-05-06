@@ -19,9 +19,15 @@ mypy>=1.0,<2.0
 # Security tools
 # ======================
 bandit>=1.7.5,<2.0
-safety>=3.0,<4.0
 
 # ======================
 # Dependency scanner
 # ======================
 deptry>=0.12.0,<1.0
+
+# ======================
+# Documentation tools
+# ======================
+commitizen>=3.12
+mkdocs>=1.5
+mkdocs-material>=9.0
