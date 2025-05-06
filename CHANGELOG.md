@@ -5,6 +5,12 @@
 - Added pylintrc (Mark Quinn)
 - bump: patch version + changelog [skip ci] (github-actions[bot])
 
+## v0.4.0 (2025-05-06)
+
+### Feat
+
+- **docs**: Update changlog generation to commitzen
+
 ## v0.3.0 (2025-05-05)
 
 ### Feat
