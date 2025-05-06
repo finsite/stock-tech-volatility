@@ -1,6 +1,5 @@
 # Changelog
 
-
 - Merge branch 'main' of https://github.com/finsite/stock-tech-volatility (Mark
   Quinn)
 - Added pylintrc (Mark Quinn)
