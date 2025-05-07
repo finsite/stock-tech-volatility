@@ -5,6 +5,12 @@
 - Added pylintrc (Mark Quinn)
 - bump: patch version + changelog [skip ci] (github-actions[bot])
 
+## v0.5.2 (2025-05-07)
+
+### Fix
+
+- **lint**: Fix pre-commit and disable pytest workflow
+
 ## v0.5.1 (2025-05-07)
 
 ### Fix
