@@ -1,5 +1,5 @@
-"""
-The module provides a decorator for retrying a function if it raises an exception.
+"""The module provides a decorator for retrying a function if it raises an
+exception.
 
 The decorator `retry_request` retries a given function if it raises an exception.
 It waits for a specified delay in seconds between retries, and attempts up to
@@ -20,8 +20,7 @@ logger = setup_logger(__name__)
 def retry_request(
     func: Callable[[], Any], *, max_retries: int = 3, delay_seconds: int = 5
 ) -> Any | None:
-    """
-    Retries a given function if it raises an exception.
+    """Retries a given function if it raises an exception.
 
     Args:
     ----
@@ -46,6 +45,16 @@ def retry_request(
       delay_seconds: int:  (Default value = 5)
 
     Returns:
+
+    Args:
+      func: Callable[[]:
+      Any]:
+      *:
+      max_retries: int:  (Default value = 3)
+      delay_seconds: int:  (Default value = 5)
+
+    Returns:
+
     """
     # Validate the function to be retried
     if func is None:

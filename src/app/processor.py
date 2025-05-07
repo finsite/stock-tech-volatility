@@ -293,11 +293,11 @@
 #     except Exception as e:
 #         logger.exception("Failed to analyze volatility for %s: %s", symbol, str(e))
 #         raise
-"""
-Processor module for volatility analysis.
+"""Processor module for volatility analysis.
 
-Provides functions for Bollinger Bands, ATR, Historical Volatility, Standard Deviation,
-Keltner Channels, Chaikin Volatility, Donchian Channels, and Price %B.
+Provides functions for Bollinger Bands, ATR, Historical Volatility,
+Standard Deviation, Keltner Channels, Chaikin Volatility, Donchian
+Channels, and Price %B.
 """
 
 from typing import Any
@@ -314,6 +314,9 @@ def calculate_bollinger_bands(
     prices: list[float], window: int = 20, num_std: int = 2
 ) -> dict[str, float]:
     """Args:
+      prices: list[float]:
+      window: int:  (Default value = 20)
+      num_std: int:  (Default value = 2)
       prices: list[float]:
       window: int:  (Default value = 20)
       num_std: int:  (Default value = 2)
@@ -342,6 +345,10 @@ def calculate_atr(
       lows: list[float]:
       closes: list[float]:
       window: int:  (Default value = 14)
+      highs: list[float]:
+      lows: list[float]:
+      closes: list[float]:
+      window: int:  (Default value = 14)
 
     Returns:
 
@@ -359,6 +366,8 @@ def calculate_std(prices: list[float], window: int = 20) -> float:
     """Args:
       prices: list[float]:
       window: int:  (Default value = 20)
+      prices: list[float]:
+      window: int:  (Default value = 20)
 
     Returns:
 
@@ -370,6 +379,8 @@ def calculate_std(prices: list[float], window: int = 20) -> float:
 
 def calculate_historical_volatility(prices: list[float], window: int = 20) -> float:
     """Args:
+      prices: list[float]:
+      window: int:  (Default value = 20)
       prices: list[float]:
       window: int:  (Default value = 20)
 
@@ -390,6 +401,11 @@ def calculate_keltner_channels(
     factor: float = 2.0,
 ) -> dict[str, float]:
     """Args:
+      highs: list[float]:
+      lows: list[float]:
+      closes: list[float]:
+      window: int:  (Default value = 20)
+      factor: float:  (Default value = 2.0)
       highs: list[float]:
       lows: list[float]:
       closes: list[float]:
@@ -416,6 +432,9 @@ def calculate_chaikin_volatility(highs: list[float], lows: list[float], window: 
       highs: list[float]:
       lows: list[float]:
       window: int:  (Default value = 10)
+      highs: list[float]:
+      lows: list[float]:
+      window: int:  (Default value = 10)
 
     Returns:
 
@@ -435,6 +454,9 @@ def calculate_donchian_channels(
       highs: list[float]:
       lows: list[float]:
       window: int:  (Default value = 20)
+      highs: list[float]:
+      lows: list[float]:
+      window: int:  (Default value = 20)
 
     Returns:
 
@@ -449,6 +471,9 @@ def calculate_donchian_channels(
 
 def calculate_price_percent_b(prices: list[float], window: int = 20, num_std: int = 2) -> float:
     """Args:
+      prices: list[float]:
+      window: int:  (Default value = 20)
+      num_std: int:  (Default value = 2)
       prices: list[float]:
       window: int:  (Default value = 20)
       num_std: int:  (Default value = 2)
@@ -471,6 +496,8 @@ def analyze_volatility(symbol: str, data: dict[str, Any]) -> dict[str, Any]:
       symbol: str:
       data: dict[str:
       Any]:
+      symbol: str:
+      data: dict[str:
 
     Returns:
 

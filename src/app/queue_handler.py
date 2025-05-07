@@ -217,11 +217,10 @@
 #         consume_sqs()  # Consume messages from SQS
 #     else:
 #         logger.error("Invalid QUEUE_TYPE specified. Use 'rabbitmq' or 'sqs'.")
-"""
-Handles message queue consumption for RabbitMQ and SQS.
+"""Handles message queue consumption for RabbitMQ and SQS.
 
-This module receives stock data, applies volatility analysis, and sends processed
-results to the output handler.
+This module receives stock data, applies volatility analysis, and sends
+processed results to the output handler.
 """
 
 import json
@@ -291,6 +290,7 @@ def consume_rabbitmq() -> None:
           ch:
           method:
           properties:
+          body: bytes:
           body: bytes:
 
         Returns:

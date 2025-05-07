@@ -1,7 +1,7 @@
-"""
-Main application entry point for stock-tech-volatility.
+"""Main application entry point for stock-tech-volatility.
 
-This module initializes logging and starts the queue message processing loop.
+This module initializes logging and starts the queue message processing
+loop.
 """
 
 from app.logger import setup_logger
@@ -12,8 +12,7 @@ logger = setup_logger("main")
 
 
 def main() -> None:
-    """
-    Starts the volatility analysis message processing loop.
+    """Starts the volatility analysis message processing loop.
 
     This function will block until the user stops the service (e.g. Ctrl-C).
 
@@ -22,6 +21,7 @@ def main() -> None:
     Args:
 
     Returns:
+
     """
     logger.info("Starting stock-tech-volatility processor...")
 
