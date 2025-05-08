@@ -5,6 +5,12 @@
 - Added pylintrc (Mark Quinn)
 - bump: patch version + changelog [skip ci] (github-actions[bot])
 
+## v0.5.4 (2025-05-08)
+
+### Fix
+
+- **docs**: Running docformatter to fix repos
+
 ## v0.5.3 (2025-05-07)
 
 ### Fix
