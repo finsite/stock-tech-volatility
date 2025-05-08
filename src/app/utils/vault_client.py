@@ -8,8 +8,11 @@ logger = logging.getLogger(__name__)
 
 
 class VaultClient:
-    """Handles interaction with HashiCorp Vault using AppRole
-    authentication.
+    """Handles interaction with HashiCorp Vault using AppRole authentication.
+
+    Args:
+
+    Returns:
     """
 
     def __init__(self) -> None:
@@ -68,8 +71,9 @@ class VaultClient:
           default: str | None:  (Default value = None)
           key: str:
           default: str | None:  (Default value = None)
+          key: str:
+          default: str | None:  (Default value = None)
 
         Returns:
-
         """
         return self.secrets.get(key, default)

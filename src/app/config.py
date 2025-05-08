@@ -23,10 +23,11 @@ def get_config_value(key: str, default: str | None = None) -> str:
       default: str | None:  (Default value = None)
       key: str:
       default: str | None:  (Default value = None)
+      key: str:
+      default: str | None:  (Default value = None)
 
     Returns:
       str: The resolved value.
-
     """
     val = _vault.get(key, os.getenv(key))
     if val is None:

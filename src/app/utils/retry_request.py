@@ -55,6 +55,14 @@ def retry_request(
 
     Returns:
 
+    Args:
+      func: Callable[[]:
+      Any]:
+      *:
+      max_retries: int:  (Default value = 3)
+      delay_seconds: int:  (Default value = 5)
+
+    Returns:
     """
     # Validate the function to be retried
     if func is None:
