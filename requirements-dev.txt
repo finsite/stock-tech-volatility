@@ -12,7 +12,7 @@ backrefs==5.8
     # via mkdocs-material
 bandit==1.8.3
     # via -r requirements-dev.in
-black==24.10.0
+black==25.1.0
     # via -r requirements-dev.in
 boto3==1.38.18
     # via -r D:\git\stock-tech-volatility\requirements.in
@@ -59,7 +59,7 @@ fonttools==4.58.0
     # via matplotlib
 ghp-import==2.1.0
     # via mkdocs
-hvac==1.2.1
+hvac==2.3.0
     # via -r D:\git\stock-tech-volatility\requirements.in
 idna==3.10
     # via requests
@@ -115,7 +115,7 @@ mypy-extensions==1.1.0
     # via
     #   black
     #   mypy
-numpy==1.26.4
+numpy==2.2.6
     # via
     #   -r D:\git\stock-tech-volatility\requirements.in
     #   contourpy
@@ -171,7 +171,7 @@ pytest==8.3.5
     # via
     #   -r requirements-dev.in
     #   pytest-cov
-pytest-cov==4.1.0
+pytest-cov==6.1.1
     # via -r requirements-dev.in
 python-dateutil==2.9.0.post0
     # via
@@ -191,7 +191,7 @@ pyyaml==6.0.2
     #   mkdocs-get-deps
     #   pymdown-extensions
     #   pyyaml-env-tag
-pyyaml-env-tag==0.1
+pyyaml-env-tag==1.1
     # via mkdocs
 questionary==2.1.0
     # via commitizen
@@ -214,7 +214,7 @@ six==1.17.0
     # via python-dateutil
 stevedore==5.4.1
     # via bandit
-termcolor==2.5.0
+termcolor==3.1.0
     # via commitizen
 tomlkit==0.13.2
     # via commitizen
