@@ -14,9 +14,9 @@ bandit==1.8.3
     # via -r requirements-dev.in
 black==25.1.0
     # via -r requirements-dev.in
-boto3==1.38.18
+boto3==1.38.23
     # via -r D:\git\stock-tech-volatility\requirements.in
-botocore==1.38.18
+botocore==1.38.23
     # via
     #   boto3
     #   s3transfer
@@ -26,7 +26,7 @@ charset-normalizer==3.4.2
     # via
     #   commitizen
     #   requests
-click==8.2.0
+click==8.2.1
     # via
     #   black
     #   deptry
@@ -41,11 +41,11 @@ colorama==0.4.6
     #   mkdocs
     #   mkdocs-material
     #   pytest
-commitizen==4.7.2
+commitizen==4.8.2
     # via -r requirements-dev.in
 contourpy==1.3.2
     # via matplotlib
-coverage[toml]==7.8.0
+coverage[toml]==7.8.2
     # via pytest-cov
 cycler==0.12.1
     # via matplotlib
@@ -200,13 +200,13 @@ requests==2.32.3
     #   -r D:\git\stock-tech-volatility\requirements.in
     #   hvac
     #   mkdocs-material
-requirements-parser==0.11.0
+requirements-parser==0.13.0
     # via deptry
 rich==14.0.0
     # via bandit
-ruff==0.11.10
+ruff==0.11.11
     # via -r requirements-dev.in
-s3transfer==0.12.0
+s3transfer==0.13.0
     # via boto3
 scipy==1.15.3
     # via -r D:\git\stock-tech-volatility\requirements.in
@@ -218,7 +218,7 @@ termcolor==3.1.0
     # via commitizen
 tomlkit==0.13.2
     # via commitizen
-types-setuptools==80.7.0.20250516
+types-setuptools==80.8.0.20250521
     # via requirements-parser
 typing-extensions==4.13.2
     # via mypy
