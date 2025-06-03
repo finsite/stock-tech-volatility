@@ -31,4 +31,4 @@ deptry>=0.12.0,<1.0
 commitizen>=3.12
 mkdocs>=1.5
 mkdocs-material>=9.0
-termcolor==2.5.0
+termcolor==2.3.0
