@@ -42,7 +42,7 @@ def get_config_value(key: str, default: str | None = None) -> str:
     :param default: str | None:  (Default value = None)
     :param key: str:
     :param default: str | None:  (Default value = None)
-    :param key: str: 
+    :param key: str:
     :param default: str | None:  (Default value = None)
 
     """

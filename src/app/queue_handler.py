@@ -286,9 +286,7 @@ def consume_rabbitmq() -> None:
     )
 
     def callback(ch, method, properties, body: bytes) -> None:
-        """
-
-        :param ch: param method:
+        """:param ch: param method:
         :param properties: param body: bytes:
         :param body: bytes:
         :param body: bytes:
@@ -300,7 +298,7 @@ def consume_rabbitmq() -> None:
         :param body: bytes:
         :param body: bytes:
         :param body: bytes:
-        :param body: bytes: 
+        :param body: bytes:
 
         """
         try:

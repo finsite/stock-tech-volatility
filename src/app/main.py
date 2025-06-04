@@ -13,9 +13,9 @@ logger = setup_logger("main")
 
 def main() -> None:
     """Starts the volatility analysis message processing loop.
-    
+
     This function will block until the user stops the service (e.g. Ctrl-C).
-    
+
     :return: None
 
 
