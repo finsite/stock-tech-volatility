@@ -26,6 +26,7 @@ def get_config_value(key: str, default: str | None = None) -> str:
 
     Returns:
       str: The resolved value.
+
     """
     val = _vault.get(key, os.getenv(key))
     if val is None:
@@ -88,25 +89,32 @@ def get_rabbitmq_routing_key() -> str:
 def get_sqs_queue_url() -> str:
     """Amazon SQS queue URL."""
     return get_config_value("SQS_QUEUE_URL", "")
+
+
 def get_rabbitmq_queue() -> str:
     """RabbitMQ queue name."""
     return get_config_value("RABBITMQ_QUEUE", "candlestick_queue")
+
 
 def get_dlq_name() -> str:
     """Dead-letter queue name (if configured)."""
     return get_config_value("DLQ_NAME", "candlestick_dlq")
 
+
 def get_polling_interval() -> int:
     """Polling interval (in seconds) between batch pulls."""
     return int(get_config_value("POLLING_INTERVAL", "60"))
+
 
 def get_batch_size() -> int:
     """Batch size for message polling or processing."""
     return int(get_config_value("BATCH_SIZE", "100"))
 
+
 def get_output_mode() -> str:
     """Output mode: 'queue' or 'log' (for dry runs)."""
     return get_config_value("OUTPUT_MODE", "queue")
+
 
 def get_sqs_region() -> str:
     """AWS region for the SQS queue."""

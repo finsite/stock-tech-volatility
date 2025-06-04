@@ -3,8 +3,7 @@ import os
 
 
 def setup_logger(name: str = "app") -> logging.Logger:
-    """
-    Sets up and returns a logger with the specified name.
+    """Sets up and returns a logger with the specified name.
 
     If a logger with the same name already exists, it is reused.
     Otherwise, a new logger is created and configured to log to stdout
@@ -18,6 +17,7 @@ def setup_logger(name: str = "app") -> logging.Logger:
 
     Returns:
         logging.Logger: The configured logger instance.
+
     """
     logger: logging.Logger = logging.getLogger(name)
 
@@ -30,9 +30,7 @@ def setup_logger(name: str = "app") -> logging.Logger:
                 '{"timestamp":"%(asctime)s","name":"%(name)s","level":"%(levelname)s","message":"%(message)s"}'
             )
         else:
-            formatter = logging.Formatter(
-                "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
-            )
+            formatter = logging.Formatter("%(asctime)s - %(name)s - %(levelname)s - %(message)s")
 
         handler.setFormatter(formatter)
         logger.addHandler(handler)

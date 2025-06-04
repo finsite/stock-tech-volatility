@@ -21,6 +21,7 @@ def main() -> None:
     Args:
 
     Returns:
+
     """
     logger.info("Starting stock-tech-volatility processor...")
 
