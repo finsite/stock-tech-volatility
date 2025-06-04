@@ -24,6 +24,7 @@ def setup_logger(name: str = "app") -> logging.Logger:
     :param name: str:  (Default value = "app")
     :param name: str:  (Default value = "app")
     :param name: str:  (Default value = "app")
+    :param name: str:  (Default value = "app")
 
     """
     logger: logging.Logger = logging.getLogger(name)
