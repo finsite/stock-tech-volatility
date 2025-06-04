@@ -324,6 +324,9 @@ def calculate_bollinger_bands(
     :param prices: list[float]:
     :param window: int:  (Default value = 20)
     :param num_std: int:  (Default value = 2)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param num_std: int:  (Default value = 2)
     :param prices: list[float]: 
     :param window: int:  (Default value = 20)
     :param num_std: int:  (Default value = 2)
@@ -347,6 +350,10 @@ def calculate_atr(
 ) -> float:
     """
 
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param closes: list[float]:
+    :param window: int:  (Default value = 14)
     :param highs: list[float]:
     :param lows: list[float]:
     :param closes: list[float]:
@@ -383,6 +390,8 @@ def calculate_std(prices: list[float], window: int = 20) -> float:
     :param window: int:  (Default value = 20)
     :param prices: list[float]:
     :param window: int:  (Default value = 20)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
     :param prices: list[float]: 
     :param window: int:  (Default value = 20)
 
@@ -395,6 +404,8 @@ def calculate_std(prices: list[float], window: int = 20) -> float:
 def calculate_historical_volatility(prices: list[float], window: int = 20) -> float:
     """
 
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
     :param prices: list[float]:
     :param window: int:  (Default value = 20)
     :param prices: list[float]:
@@ -420,6 +431,11 @@ def calculate_keltner_channels(
 ) -> dict[str, float]:
     """
 
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param closes: list[float]:
+    :param window: int:  (Default value = 20)
+    :param factor: float:  (Default value = 2.0)
     :param highs: list[float]:
     :param lows: list[float]:
     :param closes: list[float]:
@@ -466,6 +482,9 @@ def calculate_chaikin_volatility(highs: list[float], lows: list[float], window: 
     :param highs: list[float]:
     :param lows: list[float]:
     :param window: int:  (Default value = 10)
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param window: int:  (Default value = 10)
     :param highs: list[float]: 
     :param lows: list[float]: 
     :param window: int:  (Default value = 10)
@@ -484,6 +503,9 @@ def calculate_donchian_channels(
 ) -> dict[str, float]:
     """
 
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param window: int:  (Default value = 20)
     :param highs: list[float]:
     :param lows: list[float]:
     :param window: int:  (Default value = 20)
@@ -518,6 +540,9 @@ def calculate_price_percent_b(prices: list[float], window: int = 20, num_std: in
     :param prices: list[float]:
     :param window: int:  (Default value = 20)
     :param num_std: int:  (Default value = 2)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param num_std: int:  (Default value = 2)
     :param prices: list[float]: 
     :param window: int:  (Default value = 20)
     :param num_std: int:  (Default value = 2)
@@ -538,13 +563,15 @@ def analyze_volatility(symbol: str, data: dict[str, Any]) -> dict[str, Any]:
 
     :param symbol: str:
     :param data: dict[str:
-    :param Any]: 
+    :param Any: param symbol: str:
+    :param data: dict[str:
     :param symbol: str:
     :param data: dict[str:
     :param symbol: str:
     :param data: dict[str:
     :param symbol: str: 
     :param data: dict[str: 
+    :param Any]: 
 
     """
     try:

@@ -15,6 +15,7 @@ def setup_logger(name: str = "app") -> logging.Logger:
     :param name: The name of the logger. Defaults to "app".
     :type name: str
     :param name: str:  (Default value = "app")
+    :param name: str:  (Default value = "app")
     :returns: The configured logger instance.
     :rtype: logging.Logger
 
