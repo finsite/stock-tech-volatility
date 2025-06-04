@@ -315,24 +315,53 @@ def calculate_bollinger_bands(
 ) -> dict[str, float]:
     """
 
-    :param prices: list[float]:
-    :param window: int:  (Default value = 20)
-    :param num_std: int:  (Default value = 2)
-    :param prices: list[float]:
-    :param window: int:  (Default value = 20)
-    :param num_std: int:  (Default value = 2)
-    :param prices: list[float]:
-    :param window: int:  (Default value = 20)
-    :param num_std: int:  (Default value = 2)
-    :param prices: list[float]:
-    :param window: int:  (Default value = 20)
-    :param num_std: int:  (Default value = 2)
-    :param prices: list[float]:
-    :param window: int:  (Default value = 20)
-    :param num_std: int:  (Default value = 2)
-    :param prices: list[float]: 
-    :param window: int:  (Default value = 20)
-    :param num_std: int:  (Default value = 2)
+    Parameters
+    ----------
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    num_std :
+        int:  (Default value = 2)
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    num_std :
+        int:  (Default value = 2)
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    num_std :
+        int:  (Default value = 2)
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    num_std :
+        int:  (Default value = 2)
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    num_std :
+        int:  (Default value = 2)
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    num_std :
+        int:  (Default value = 2)
+    prices: list[float] :
+
+    window: int :
+         (Default value = 20)
+    num_std: int :
+         (Default value = 2)
+
+    Returns
+    -------
 
     """
     if len(prices) < window:
@@ -353,30 +382,67 @@ def calculate_atr(
 ) -> float:
     """
 
-    :param highs: list[float]:
-    :param lows: list[float]:
-    :param closes: list[float]:
-    :param window: int:  (Default value = 14)
-    :param highs: list[float]:
-    :param lows: list[float]:
-    :param closes: list[float]:
-    :param window: int:  (Default value = 14)
-    :param highs: list[float]:
-    :param lows: list[float]:
-    :param closes: list[float]:
-    :param window: int:  (Default value = 14)
-    :param highs: list[float]:
-    :param lows: list[float]:
-    :param closes: list[float]:
-    :param window: int:  (Default value = 14)
-    :param highs: list[float]:
-    :param lows: list[float]:
-    :param closes: list[float]:
-    :param window: int:  (Default value = 14)
-    :param highs: list[float]: 
-    :param lows: list[float]: 
-    :param closes: list[float]: 
-    :param window: int:  (Default value = 14)
+    Parameters
+    ----------
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    closes :
+        list[float]:
+    window :
+        int:  (Default value = 14)
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    closes :
+        list[float]:
+    window :
+        int:  (Default value = 14)
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    closes :
+        list[float]:
+    window :
+        int:  (Default value = 14)
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    closes :
+        list[float]:
+    window :
+        int:  (Default value = 14)
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    closes :
+        list[float]:
+    window :
+        int:  (Default value = 14)
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    closes :
+        list[float]:
+    window :
+        int:  (Default value = 14)
+    highs: list[float] :
+
+    lows: list[float] :
+
+    closes: list[float] :
+
+    window: int :
+         (Default value = 14)
+
+    Returns
+    -------
 
     """
     if len(closes) < window + 1:
@@ -391,18 +457,39 @@ def calculate_atr(
 def calculate_std(prices: list[float], window: int = 20) -> float:
     """
 
-    :param prices: list[float]:
-    :param window: int:  (Default value = 20)
-    :param prices: list[float]:
-    :param window: int:  (Default value = 20)
-    :param prices: list[float]:
-    :param window: int:  (Default value = 20)
-    :param prices: list[float]:
-    :param window: int:  (Default value = 20)
-    :param prices: list[float]:
-    :param window: int:  (Default value = 20)
-    :param prices: list[float]: 
-    :param window: int:  (Default value = 20)
+    Parameters
+    ----------
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    prices: list[float] :
+
+    window: int :
+         (Default value = 20)
+
+    Returns
+    -------
 
     """
     if len(prices) < window:
@@ -413,18 +500,39 @@ def calculate_std(prices: list[float], window: int = 20) -> float:
 def calculate_historical_volatility(prices: list[float], window: int = 20) -> float:
     """
 
-    :param prices: list[float]:
-    :param window: int:  (Default value = 20)
-    :param prices: list[float]:
-    :param window: int:  (Default value = 20)
-    :param prices: list[float]:
-    :param window: int:  (Default value = 20)
-    :param prices: list[float]:
-    :param window: int:  (Default value = 20)
-    :param prices: list[float]:
-    :param window: int:  (Default value = 20)
-    :param prices: list[float]: 
-    :param window: int:  (Default value = 20)
+    Parameters
+    ----------
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    prices: list[float] :
+
+    window: int :
+         (Default value = 20)
+
+    Returns
+    -------
 
     """
     if len(prices) < window + 1:
@@ -442,36 +550,81 @@ def calculate_keltner_channels(
 ) -> dict[str, float]:
     """
 
-    :param highs: list[float]:
-    :param lows: list[float]:
-    :param closes: list[float]:
-    :param window: int:  (Default value = 20)
-    :param factor: float:  (Default value = 2.0)
-    :param highs: list[float]:
-    :param lows: list[float]:
-    :param closes: list[float]:
-    :param window: int:  (Default value = 20)
-    :param factor: float:  (Default value = 2.0)
-    :param highs: list[float]:
-    :param lows: list[float]:
-    :param closes: list[float]:
-    :param window: int:  (Default value = 20)
-    :param factor: float:  (Default value = 2.0)
-    :param highs: list[float]:
-    :param lows: list[float]:
-    :param closes: list[float]:
-    :param window: int:  (Default value = 20)
-    :param factor: float:  (Default value = 2.0)
-    :param highs: list[float]:
-    :param lows: list[float]:
-    :param closes: list[float]:
-    :param window: int:  (Default value = 20)
-    :param factor: float:  (Default value = 2.0)
-    :param highs: list[float]: 
-    :param lows: list[float]: 
-    :param closes: list[float]: 
-    :param window: int:  (Default value = 20)
-    :param factor: float:  (Default value = 2.0)
+    Parameters
+    ----------
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    closes :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    factor :
+        float:  (Default value = 2.0)
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    closes :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    factor :
+        float:  (Default value = 2.0)
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    closes :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    factor :
+        float:  (Default value = 2.0)
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    closes :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    factor :
+        float:  (Default value = 2.0)
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    closes :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    factor :
+        float:  (Default value = 2.0)
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    closes :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    factor :
+        float:  (Default value = 2.0)
+    highs: list[float] :
+
+    lows: list[float] :
+
+    closes: list[float] :
+
+    window: int :
+         (Default value = 20)
+    factor: float :
+         (Default value = 2.0)
+
+    Returns
+    -------
 
     """
     if len(closes) < window or len(highs) < window or len(lows) < window:
@@ -489,24 +642,53 @@ def calculate_keltner_channels(
 def calculate_chaikin_volatility(highs: list[float], lows: list[float], window: int = 10) -> float:
     """
 
-    :param highs: list[float]:
-    :param lows: list[float]:
-    :param window: int:  (Default value = 10)
-    :param highs: list[float]:
-    :param lows: list[float]:
-    :param window: int:  (Default value = 10)
-    :param highs: list[float]:
-    :param lows: list[float]:
-    :param window: int:  (Default value = 10)
-    :param highs: list[float]:
-    :param lows: list[float]:
-    :param window: int:  (Default value = 10)
-    :param highs: list[float]:
-    :param lows: list[float]:
-    :param window: int:  (Default value = 10)
-    :param highs: list[float]: 
-    :param lows: list[float]: 
-    :param window: int:  (Default value = 10)
+    Parameters
+    ----------
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    window :
+        int:  (Default value = 10)
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    window :
+        int:  (Default value = 10)
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    window :
+        int:  (Default value = 10)
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    window :
+        int:  (Default value = 10)
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    window :
+        int:  (Default value = 10)
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    window :
+        int:  (Default value = 10)
+    highs: list[float] :
+
+    lows: list[float] :
+
+    window: int :
+         (Default value = 10)
+
+    Returns
+    -------
 
     """
     if len(highs) < window * 2 or len(lows) < window * 2:
@@ -522,24 +704,53 @@ def calculate_donchian_channels(
 ) -> dict[str, float]:
     """
 
-    :param highs: list[float]:
-    :param lows: list[float]:
-    :param window: int:  (Default value = 20)
-    :param highs: list[float]:
-    :param lows: list[float]:
-    :param window: int:  (Default value = 20)
-    :param highs: list[float]:
-    :param lows: list[float]:
-    :param window: int:  (Default value = 20)
-    :param highs: list[float]:
-    :param lows: list[float]:
-    :param window: int:  (Default value = 20)
-    :param highs: list[float]:
-    :param lows: list[float]:
-    :param window: int:  (Default value = 20)
-    :param highs: list[float]: 
-    :param lows: list[float]: 
-    :param window: int:  (Default value = 20)
+    Parameters
+    ----------
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    highs :
+        list[float]:
+    lows :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    highs: list[float] :
+
+    lows: list[float] :
+
+    window: int :
+         (Default value = 20)
+
+    Returns
+    -------
 
     """
     if len(highs) < window or len(lows) < window:
@@ -553,24 +764,53 @@ def calculate_donchian_channels(
 def calculate_price_percent_b(prices: list[float], window: int = 20, num_std: int = 2) -> float:
     """
 
-    :param prices: list[float]:
-    :param window: int:  (Default value = 20)
-    :param num_std: int:  (Default value = 2)
-    :param prices: list[float]:
-    :param window: int:  (Default value = 20)
-    :param num_std: int:  (Default value = 2)
-    :param prices: list[float]:
-    :param window: int:  (Default value = 20)
-    :param num_std: int:  (Default value = 2)
-    :param prices: list[float]:
-    :param window: int:  (Default value = 20)
-    :param num_std: int:  (Default value = 2)
-    :param prices: list[float]:
-    :param window: int:  (Default value = 20)
-    :param num_std: int:  (Default value = 2)
-    :param prices: list[float]: 
-    :param window: int:  (Default value = 20)
-    :param num_std: int:  (Default value = 2)
+    Parameters
+    ----------
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    num_std :
+        int:  (Default value = 2)
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    num_std :
+        int:  (Default value = 2)
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    num_std :
+        int:  (Default value = 2)
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    num_std :
+        int:  (Default value = 2)
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    num_std :
+        int:  (Default value = 2)
+    prices :
+        list[float]:
+    window :
+        int:  (Default value = 20)
+    num_std :
+        int:  (Default value = 2)
+    prices: list[float] :
+
+    window: int :
+         (Default value = 20)
+    num_std: int :
+         (Default value = 2)
+
+    Returns
+    -------
 
     """
     if len(prices) < window:
@@ -586,20 +826,43 @@ def calculate_price_percent_b(prices: list[float], window: int = 20, num_std: in
 def analyze_volatility(symbol: str, data: dict[str, Any]) -> dict[str, Any]:
     """
 
-    :param symbol: str:
-    :param data: dict[str:
-    :param Any: param symbol: str:
-    :param data: dict[str:
-    :param symbol: str:
-    :param data: dict[str:
-    :param symbol: str:
-    :param data: dict[str:
-    :param symbol: str:
-    :param data: dict[str:
-    :param Any: 
-    :param symbol: str: 
-    :param data: dict[str: 
-    :param Any]: 
+    Parameters
+    ----------
+    symbol :
+        str:
+    data :
+        dict[str:
+    Any :
+        param symbol: str:
+    data :
+        dict[str:
+    symbol :
+        str:
+    data :
+        dict[str:
+    symbol :
+        str:
+    data :
+        dict[str:
+    symbol :
+        str:
+    data :
+        dict[str:
+    Any :
+        param symbol: str:
+    data :
+        dict[str:
+    Any :
+
+    symbol: str :
+
+    data: dict[str :
+
+    Any] :
+
+
+    Returns
+    -------
 
     """
     try:
