@@ -19,7 +19,6 @@ def main() -> None:
     :return: None
 
 
-    
     """
     logger.info("Starting stock-tech-volatility processor...")
 
