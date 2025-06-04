@@ -353,6 +353,12 @@ def calculate_bollinger_bands(
         int:  (Default value = 20)
     num_std :
         int:  (Default value = 2)
+    prices : list[float] :
+
+    window : int :
+        (Default value = 20)
+    num_std : int :
+        (Default value = 2)
     prices: list[float] :
 
     window: int :
@@ -362,6 +368,7 @@ def calculate_bollinger_bands(
 
     Returns
     -------
+
 
     """
     if len(prices) < window:
@@ -432,6 +439,14 @@ def calculate_atr(
         list[float]:
     window :
         int:  (Default value = 14)
+    highs : list[float] :
+
+    lows : list[float] :
+
+    closes : list[float] :
+
+    window : int :
+        (Default value = 14)
     highs: list[float] :
 
     lows: list[float] :
@@ -443,6 +458,7 @@ def calculate_atr(
 
     Returns
     -------
+
 
     """
     if len(closes) < window + 1:
@@ -483,6 +499,10 @@ def calculate_std(prices: list[float], window: int = 20) -> float:
         list[float]:
     window :
         int:  (Default value = 20)
+    prices : list[float] :
+
+    window : int :
+        (Default value = 20)
     prices: list[float] :
 
     window: int :
@@ -490,6 +510,7 @@ def calculate_std(prices: list[float], window: int = 20) -> float:
 
     Returns
     -------
+
 
     """
     if len(prices) < window:
@@ -526,6 +547,10 @@ def calculate_historical_volatility(prices: list[float], window: int = 20) -> fl
         list[float]:
     window :
         int:  (Default value = 20)
+    prices : list[float] :
+
+    window : int :
+        (Default value = 20)
     prices: list[float] :
 
     window: int :
@@ -533,6 +558,7 @@ def calculate_historical_volatility(prices: list[float], window: int = 20) -> fl
 
     Returns
     -------
+
 
     """
     if len(prices) < window + 1:
@@ -612,6 +638,16 @@ def calculate_keltner_channels(
         int:  (Default value = 20)
     factor :
         float:  (Default value = 2.0)
+    highs : list[float] :
+
+    lows : list[float] :
+
+    closes : list[float] :
+
+    window : int :
+        (Default value = 20)
+    factor : float :
+        (Default value = 2.0)
     highs: list[float] :
 
     lows: list[float] :
@@ -625,6 +661,7 @@ def calculate_keltner_channels(
 
     Returns
     -------
+
 
     """
     if len(closes) < window or len(highs) < window or len(lows) < window:
@@ -680,6 +717,12 @@ def calculate_chaikin_volatility(highs: list[float], lows: list[float], window: 
         list[float]:
     window :
         int:  (Default value = 10)
+    highs : list[float] :
+
+    lows : list[float] :
+
+    window : int :
+        (Default value = 10)
     highs: list[float] :
 
     lows: list[float] :
@@ -689,6 +732,7 @@ def calculate_chaikin_volatility(highs: list[float], lows: list[float], window: 
 
     Returns
     -------
+
 
     """
     if len(highs) < window * 2 or len(lows) < window * 2:
@@ -742,6 +786,12 @@ def calculate_donchian_channels(
         list[float]:
     window :
         int:  (Default value = 20)
+    highs : list[float] :
+
+    lows : list[float] :
+
+    window : int :
+        (Default value = 20)
     highs: list[float] :
 
     lows: list[float] :
@@ -751,6 +801,7 @@ def calculate_donchian_channels(
 
     Returns
     -------
+
 
     """
     if len(highs) < window or len(lows) < window:
@@ -802,6 +853,12 @@ def calculate_price_percent_b(prices: list[float], window: int = 20, num_std: in
         int:  (Default value = 20)
     num_std :
         int:  (Default value = 2)
+    prices : list[float] :
+
+    window : int :
+        (Default value = 20)
+    num_std : int :
+        (Default value = 2)
     prices: list[float] :
 
     window: int :
@@ -811,6 +868,7 @@ def calculate_price_percent_b(prices: list[float], window: int = 20, num_std: in
 
     Returns
     -------
+
 
     """
     if len(prices) < window:
@@ -854,15 +912,20 @@ def analyze_volatility(symbol: str, data: dict[str, Any]) -> dict[str, Any]:
         dict[str:
     Any :
 
+    symbol : str :
+
+    data : dict[str :
+
+    Any] :
+
     symbol: str :
 
     data: dict[str :
 
-    Any] :
-
 
     Returns
     -------
+
 
     """
     try:

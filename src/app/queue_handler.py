@@ -304,11 +304,14 @@ def consume_rabbitmq() -> None:
             param body: bytes:
         body :
             bytes:
+        body : bytes :
+
         body: bytes :
 
 
         Returns
         -------
+
 
         """
         try:
