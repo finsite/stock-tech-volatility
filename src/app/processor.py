@@ -315,61 +315,41 @@ def calculate_bollinger_bands(
 ) -> dict[str, float]:
     """
 
-    Parameters
-    ----------
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    num_std :
-        int:  (Default value = 2)
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    num_std :
-        int:  (Default value = 2)
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    num_std :
-        int:  (Default value = 2)
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    num_std :
-        int:  (Default value = 2)
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    num_std :
-        int:  (Default value = 2)
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    num_std :
-        int:  (Default value = 2)
-    prices : list[float] :
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param num_std: int:  (Default value = 2)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param num_std: int:  (Default value = 2)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param num_std: int:  (Default value = 2)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param num_std: int:  (Default value = 2)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param num_std: int:  (Default value = 2)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param num_std: int:  (Default value = 2)
+    :param prices: 
+    :type prices: list[float] :
+    :param window: (Default value = 20)
+    :type window: int :
+    :param num_std: (Default value = 2)
+    :type num_std: int :
+    :param prices: 
+    :type prices: list[float] :
+    :param window: (Default value = 20)
+    :type window: int :
+    :param num_std: (Default value = 2)
+    :type num_std: int :
+    :param prices: list[float]: 
+    :param window: int:  (Default value = 20)
+    :param num_std: int:  (Default value = 2)
 
-    window : int :
-        (Default value = 20)
-    num_std : int :
-        (Default value = 2)
-    prices: list[float] :
-
-    window: int :
-         (Default value = 20)
-    num_std: int :
-         (Default value = 2)
-
-    Returns
-    -------
-
-
+    
     """
     if len(prices) < window:
         raise ValueError("Not enough price data for Bollinger Bands calculation.")
@@ -389,77 +369,52 @@ def calculate_atr(
 ) -> float:
     """
 
-    Parameters
-    ----------
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    closes :
-        list[float]:
-    window :
-        int:  (Default value = 14)
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    closes :
-        list[float]:
-    window :
-        int:  (Default value = 14)
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    closes :
-        list[float]:
-    window :
-        int:  (Default value = 14)
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    closes :
-        list[float]:
-    window :
-        int:  (Default value = 14)
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    closes :
-        list[float]:
-    window :
-        int:  (Default value = 14)
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    closes :
-        list[float]:
-    window :
-        int:  (Default value = 14)
-    highs : list[float] :
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param closes: list[float]:
+    :param window: int:  (Default value = 14)
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param closes: list[float]:
+    :param window: int:  (Default value = 14)
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param closes: list[float]:
+    :param window: int:  (Default value = 14)
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param closes: list[float]:
+    :param window: int:  (Default value = 14)
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param closes: list[float]:
+    :param window: int:  (Default value = 14)
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param closes: list[float]:
+    :param window: int:  (Default value = 14)
+    :param highs: 
+    :type highs: list[float] :
+    :param lows: 
+    :type lows: list[float] :
+    :param closes: 
+    :type closes: list[float] :
+    :param window: (Default value = 14)
+    :type window: int :
+    :param highs: 
+    :type highs: list[float] :
+    :param lows: 
+    :type lows: list[float] :
+    :param closes: 
+    :type closes: list[float] :
+    :param window: (Default value = 14)
+    :type window: int :
+    :param highs: list[float]: 
+    :param lows: list[float]: 
+    :param closes: list[float]: 
+    :param window: int:  (Default value = 14)
 
-    lows : list[float] :
-
-    closes : list[float] :
-
-    window : int :
-        (Default value = 14)
-    highs: list[float] :
-
-    lows: list[float] :
-
-    closes: list[float] :
-
-    window: int :
-         (Default value = 14)
-
-    Returns
-    -------
-
-
+    
     """
     if len(closes) < window + 1:
         raise ValueError("Not enough data for ATR calculation.")
@@ -473,45 +428,30 @@ def calculate_atr(
 def calculate_std(prices: list[float], window: int = 20) -> float:
     """
 
-    Parameters
-    ----------
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    prices : list[float] :
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param prices: 
+    :type prices: list[float] :
+    :param window: (Default value = 20)
+    :type window: int :
+    :param prices: 
+    :type prices: list[float] :
+    :param window: (Default value = 20)
+    :type window: int :
+    :param prices: list[float]: 
+    :param window: int:  (Default value = 20)
 
-    window : int :
-        (Default value = 20)
-    prices: list[float] :
-
-    window: int :
-         (Default value = 20)
-
-    Returns
-    -------
-
-
+    
     """
     if len(prices) < window:
         raise ValueError("Not enough data for standard deviation.")
@@ -521,45 +461,30 @@ def calculate_std(prices: list[float], window: int = 20) -> float:
 def calculate_historical_volatility(prices: list[float], window: int = 20) -> float:
     """
 
-    Parameters
-    ----------
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    prices : list[float] :
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param prices: 
+    :type prices: list[float] :
+    :param window: (Default value = 20)
+    :type window: int :
+    :param prices: 
+    :type prices: list[float] :
+    :param window: (Default value = 20)
+    :type window: int :
+    :param prices: list[float]: 
+    :param window: int:  (Default value = 20)
 
-    window : int :
-        (Default value = 20)
-    prices: list[float] :
-
-    window: int :
-         (Default value = 20)
-
-    Returns
-    -------
-
-
+    
     """
     if len(prices) < window + 1:
         raise ValueError("Not enough data for historical volatility.")
@@ -576,93 +501,63 @@ def calculate_keltner_channels(
 ) -> dict[str, float]:
     """
 
-    Parameters
-    ----------
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    closes :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    factor :
-        float:  (Default value = 2.0)
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    closes :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    factor :
-        float:  (Default value = 2.0)
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    closes :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    factor :
-        float:  (Default value = 2.0)
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    closes :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    factor :
-        float:  (Default value = 2.0)
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    closes :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    factor :
-        float:  (Default value = 2.0)
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    closes :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    factor :
-        float:  (Default value = 2.0)
-    highs : list[float] :
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param closes: list[float]:
+    :param window: int:  (Default value = 20)
+    :param factor: float:  (Default value = 2.0)
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param closes: list[float]:
+    :param window: int:  (Default value = 20)
+    :param factor: float:  (Default value = 2.0)
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param closes: list[float]:
+    :param window: int:  (Default value = 20)
+    :param factor: float:  (Default value = 2.0)
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param closes: list[float]:
+    :param window: int:  (Default value = 20)
+    :param factor: float:  (Default value = 2.0)
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param closes: list[float]:
+    :param window: int:  (Default value = 20)
+    :param factor: float:  (Default value = 2.0)
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param closes: list[float]:
+    :param window: int:  (Default value = 20)
+    :param factor: float:  (Default value = 2.0)
+    :param highs: 
+    :type highs: list[float] :
+    :param lows: 
+    :type lows: list[float] :
+    :param closes: 
+    :type closes: list[float] :
+    :param window: (Default value = 20)
+    :type window: int :
+    :param factor: (Default value = 2.0)
+    :type factor: float :
+    :param highs: 
+    :type highs: list[float] :
+    :param lows: 
+    :type lows: list[float] :
+    :param closes: 
+    :type closes: list[float] :
+    :param window: (Default value = 20)
+    :type window: int :
+    :param factor: (Default value = 2.0)
+    :type factor: float :
+    :param highs: list[float]: 
+    :param lows: list[float]: 
+    :param closes: list[float]: 
+    :param window: int:  (Default value = 20)
+    :param factor: float:  (Default value = 2.0)
 
-    lows : list[float] :
-
-    closes : list[float] :
-
-    window : int :
-        (Default value = 20)
-    factor : float :
-        (Default value = 2.0)
-    highs: list[float] :
-
-    lows: list[float] :
-
-    closes: list[float] :
-
-    window: int :
-         (Default value = 20)
-    factor: float :
-         (Default value = 2.0)
-
-    Returns
-    -------
-
-
+    
     """
     if len(closes) < window or len(highs) < window or len(lows) < window:
         raise ValueError("Not enough data for Keltner Channels.")
@@ -679,61 +574,41 @@ def calculate_keltner_channels(
 def calculate_chaikin_volatility(highs: list[float], lows: list[float], window: int = 10) -> float:
     """
 
-    Parameters
-    ----------
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    window :
-        int:  (Default value = 10)
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    window :
-        int:  (Default value = 10)
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    window :
-        int:  (Default value = 10)
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    window :
-        int:  (Default value = 10)
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    window :
-        int:  (Default value = 10)
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    window :
-        int:  (Default value = 10)
-    highs : list[float] :
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param window: int:  (Default value = 10)
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param window: int:  (Default value = 10)
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param window: int:  (Default value = 10)
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param window: int:  (Default value = 10)
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param window: int:  (Default value = 10)
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param window: int:  (Default value = 10)
+    :param highs: 
+    :type highs: list[float] :
+    :param lows: 
+    :type lows: list[float] :
+    :param window: (Default value = 10)
+    :type window: int :
+    :param highs: 
+    :type highs: list[float] :
+    :param lows: 
+    :type lows: list[float] :
+    :param window: (Default value = 10)
+    :type window: int :
+    :param highs: list[float]: 
+    :param lows: list[float]: 
+    :param window: int:  (Default value = 10)
 
-    lows : list[float] :
-
-    window : int :
-        (Default value = 10)
-    highs: list[float] :
-
-    lows: list[float] :
-
-    window: int :
-         (Default value = 10)
-
-    Returns
-    -------
-
-
+    
     """
     if len(highs) < window * 2 or len(lows) < window * 2:
         raise ValueError("Not enough data for Chaikin Volatility.")
@@ -748,61 +623,41 @@ def calculate_donchian_channels(
 ) -> dict[str, float]:
     """
 
-    Parameters
-    ----------
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    highs :
-        list[float]:
-    lows :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    highs : list[float] :
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param window: int:  (Default value = 20)
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param window: int:  (Default value = 20)
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param window: int:  (Default value = 20)
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param window: int:  (Default value = 20)
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param window: int:  (Default value = 20)
+    :param highs: list[float]:
+    :param lows: list[float]:
+    :param window: int:  (Default value = 20)
+    :param highs: 
+    :type highs: list[float] :
+    :param lows: 
+    :type lows: list[float] :
+    :param window: (Default value = 20)
+    :type window: int :
+    :param highs: 
+    :type highs: list[float] :
+    :param lows: 
+    :type lows: list[float] :
+    :param window: (Default value = 20)
+    :type window: int :
+    :param highs: list[float]: 
+    :param lows: list[float]: 
+    :param window: int:  (Default value = 20)
 
-    lows : list[float] :
-
-    window : int :
-        (Default value = 20)
-    highs: list[float] :
-
-    lows: list[float] :
-
-    window: int :
-         (Default value = 20)
-
-    Returns
-    -------
-
-
+    
     """
     if len(highs) < window or len(lows) < window:
         raise ValueError("Not enough data for Donchian Channels.")
@@ -815,61 +670,41 @@ def calculate_donchian_channels(
 def calculate_price_percent_b(prices: list[float], window: int = 20, num_std: int = 2) -> float:
     """
 
-    Parameters
-    ----------
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    num_std :
-        int:  (Default value = 2)
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    num_std :
-        int:  (Default value = 2)
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    num_std :
-        int:  (Default value = 2)
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    num_std :
-        int:  (Default value = 2)
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    num_std :
-        int:  (Default value = 2)
-    prices :
-        list[float]:
-    window :
-        int:  (Default value = 20)
-    num_std :
-        int:  (Default value = 2)
-    prices : list[float] :
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param num_std: int:  (Default value = 2)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param num_std: int:  (Default value = 2)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param num_std: int:  (Default value = 2)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param num_std: int:  (Default value = 2)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param num_std: int:  (Default value = 2)
+    :param prices: list[float]:
+    :param window: int:  (Default value = 20)
+    :param num_std: int:  (Default value = 2)
+    :param prices: 
+    :type prices: list[float] :
+    :param window: (Default value = 20)
+    :type window: int :
+    :param num_std: (Default value = 2)
+    :type num_std: int :
+    :param prices: 
+    :type prices: list[float] :
+    :param window: (Default value = 20)
+    :type window: int :
+    :param num_std: (Default value = 2)
+    :type num_std: int :
+    :param prices: list[float]: 
+    :param window: int:  (Default value = 20)
+    :param num_std: int:  (Default value = 2)
 
-    window : int :
-        (Default value = 20)
-    num_std : int :
-        (Default value = 2)
-    prices: list[float] :
-
-    window: int :
-         (Default value = 20)
-    num_std: int :
-         (Default value = 2)
-
-    Returns
-    -------
-
-
+    
     """
     if len(prices) < window:
         raise ValueError("Not enough data for %B calculation.")
@@ -884,49 +719,32 @@ def calculate_price_percent_b(prices: list[float], window: int = 20, num_std: in
 def analyze_volatility(symbol: str, data: dict[str, Any]) -> dict[str, Any]:
     """
 
-    Parameters
-    ----------
-    symbol :
-        str:
-    data :
-        dict[str:
-    Any :
-        param symbol: str:
-    data :
-        dict[str:
-    symbol :
-        str:
-    data :
-        dict[str:
-    symbol :
-        str:
-    data :
-        dict[str:
-    symbol :
-        str:
-    data :
-        dict[str:
-    Any :
-        param symbol: str:
-    data :
-        dict[str:
-    Any :
+    :param symbol: str:
+    :param data: dict[str:
+    :param Any: param symbol: str:
+    :param data: dict[str:
+    :param symbol: str:
+    :param data: dict[str:
+    :param symbol: str:
+    :param data: dict[str:
+    :param symbol: str:
+    :param data: dict[str:
+    :param Any: param symbol: str:
+    :param data: dict[str:
+    :param Any: 
+    :param symbol: 
+    :type symbol: str :
+    :param data: 
+    :type data: dict[str :
+    :param Any]: 
+    :param symbol: 
+    :type symbol: str :
+    :param data: 
+    :type data: dict[str :
+    :param symbol: str: 
+    :param data: dict[str: 
 
-    symbol : str :
-
-    data : dict[str :
-
-    Any] :
-
-    symbol: str :
-
-    data: dict[str :
-
-
-    Returns
-    -------
-
-
+    
     """
     try:
         logger.info("Analyzing volatility for %s", symbol)

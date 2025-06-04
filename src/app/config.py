@@ -16,45 +16,32 @@ def get_config_value(key: str, default: str | None = None) -> str:
     """Retrieve a configuration value from Vault, environment variable, or
     default.
 
-    Parameters
-    ----------
-    key : str
-        Configuration key to fetch.
-    default : Optional[str]
-        Fallback value if key is not found.
-    key :
-        str:
-    default :
-        str | None:  (Default value = None)
-    key :
-        str:
-    default :
-        str | None:  (Default value = None)
-    key :
-        str:
-    default :
-        str | None:  (Default value = None)
-    key :
-        str:
-    default :
-        str | None:  (Default value = None)
-    key :
-        str:
-    default :
-        str | None:  (Default value = None)
-    key : str :
+    :param key: Configuration key to fetch.
+    :type key: str
+    :param default: Fallback value if key is not found.
+    :type default: Optional[str]
+    :param key: str:
+    :param default: str | None:  (Default value = None)
+    :param key: str:
+    :param default: str | None:  (Default value = None)
+    :param key: str:
+    :param default: str | None:  (Default value = None)
+    :param key: str:
+    :param default: str | None:  (Default value = None)
+    :param key: str:
+    :param default: str | None:  (Default value = None)
+    :param key: 
+    :type key: str :
+    :param default: (Default value = None)
+    :type default: str | None :
+    :param key: 
+    :type key: str :
+    :param default: (Default value = None)
+    :type default: str | None :
+    :param key: str: 
+    :param default: str | None:  (Default value = None)
 
-    default : str | None :
-        (Default value = None)
-    key: str :
-
-    default: str | None :
-         (Default value = None)
-
-    Returns
-    -------
-
-
+    
     """
     val = _vault.get(key, os.getenv(key))
     if val is None:
