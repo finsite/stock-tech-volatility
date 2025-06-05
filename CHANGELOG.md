@@ -5,6 +5,12 @@
 - Added pylintrc (Mark Quinn)
 - bump: patch version + changelog [skip ci] (github-actions[bot])
 
+## v0.5.8 (2025-06-05)
+
+### Fix
+
+- **files**: Address workflows timing out issues
+
 ## v0.5.7 (2025-06-03)
 
 ### Fix
