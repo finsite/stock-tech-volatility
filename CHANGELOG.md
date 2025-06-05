@@ -5,6 +5,12 @@
 - Added pylintrc (Mark Quinn)
 - bump: patch version + changelog [skip ci] (github-actions[bot])
 
+## v0.6.0 (2025-06-05)
+
+### Feat
+
+- **sync**: add full sync_if_needed.py script with logging and Makefile support
+
 ## v0.5.8 (2025-06-05)
 
 ### Fix
