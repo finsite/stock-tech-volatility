@@ -14,11 +14,11 @@ bandit==1.8.3
     # via -r requirements-dev.in
 black==24.10.0
     # via -r requirements-dev.in
-boto3==1.38.30
+boto3==1.38.32
     # via
     #   -r D:\git\stock-tech-volatility\requirements.in
     #   -r requirements.txt
-botocore==1.38.30
+botocore==1.38.32
     # via
     #   -r requirements.txt
     #   boto3
@@ -66,7 +66,7 @@ deptry==0.23.0
     # via -r requirements-dev.in
 flake8==7.2.0
     # via -r requirements-dev.in
-fonttools==4.58.1
+fonttools==4.58.2
     # via
     #   -r requirements.txt
     #   matplotlib
@@ -248,7 +248,7 @@ requirements-parser==0.13.0
     # via deptry
 rich==14.0.0
     # via bandit
-ruff==0.11.12
+ruff==0.11.13
     # via -r requirements-dev.in
 s3transfer==0.13.0
     # via
@@ -264,7 +264,7 @@ six==1.17.0
     #   python-dateutil
 stevedore==5.4.1
     # via bandit
-termcolor==2.3.0
+termcolor==2.5.0
     # via
     #   -r requirements-dev.in
     #   commitizen
