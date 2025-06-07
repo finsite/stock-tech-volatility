@@ -1,9 +1,8 @@
-# Changelog
+## v0.1.0 (2025-06-05)
 
-- Merge branch 'main' of https://github.com/finsite/stock-tech-volatility (Mark
-  Quinn)
-- Added pylintrc (Mark Quinn)
-- bump: patch version + changelog [skip ci] (github-actions[bot])
+### Fix
+
+- **deps**: recompile requirements to resolve dependency conflicts
 
 ## v0.6.1 (2025-06-06)
 
@@ -32,59 +31,50 @@
 
 ## v0.5.6 (2025-06-03)
 
-### Fix
-
-- **deps**: standardize termcolor to 2.5.0
-
 ## v0.5.5 (2025-06-03)
 
 ### Fix
 
-- **files**: Cleanup redundant files and standardize
+- **deps**: standardize termcolor to 2.5.0
 
 ## v0.5.4 (2025-05-08)
 
 ### Fix
 
-- **docs**: Running docformatter to fix repos
+- **files**: Cleanup redundant files and standardize
 
 ## v0.5.3 (2025-05-07)
 
 ### Fix
 
+- **docs**: Running docformatter to fix repos
 - **test**: Disable pytest performance benchmark
 
 ## v0.5.2 (2025-05-07)
-
-### Fix
-
-- **lint**: Fix pre-commit and disable pytest workflow
 
 ## v0.5.1 (2025-05-07)
 
 ### Fix
 
+- **lint**: Fix pre-commit and disable pytest workflow
 - **docker**: Fix workflow not getting version
 
 ## v0.5.0 (2025-05-06)
-
-### Feat
-
-- **docs**: Update changlog generation to commitzen
 
 ## v0.4.0 (2025-05-06)
 
 ### Feat
 
 - **docs**: Update changlog generation to commitzen
+- **docs**: Update changlog generation to commitzen
 
 ## v0.3.0 (2025-05-05)
+
+## v0.2.0 (2025-05-05)
 
 ### Feat
 
 - **docs**: Added automated releases
-
-## v0.2.0 (2025-05-05)
 
 ## v0.1.39 (2025-05-05)
 
