@@ -364,9 +364,7 @@ def calculate_bollinger_bands(
         "sma": round(sma, 4),
         "upper_band": round(sma + num_std * std, 4),
         "lower_band": round(sma - num_std * std, 4),
-        "percent_b": round(
-            (series.iloc[-1] - (sma - num_std * std)) / (2 * num_std * std), 4
-        ),
+        "percent_b": round((series.iloc[-1] - (sma - num_std * std)) / (2 * num_std * std), 4),
     }
 
 
@@ -592,9 +590,7 @@ def calculate_keltner_channels(
     }
 
 
-def calculate_chaikin_volatility(
-    highs: list[float], lows: list[float], window: int = 10
-) -> float:
+def calculate_chaikin_volatility(highs: list[float], lows: list[float], window: int = 10) -> float:
     """:param highs: list[float]:
     :param lows: list[float]:
     :param window: int:  (Default value = 10)
@@ -639,9 +635,7 @@ def calculate_chaikin_volatility(
         raise ValueError("Not enough data for Chaikin Volatility.")
     hl_range = pd.Series([h - l for h, l in zip(highs, lows)])
     ema_short = hl_range.ewm(span=window).mean()
-    chaikin_vol = (
-        (ema_short - ema_short.shift(window)) / ema_short.shift(window)
-    ) * 100
+    chaikin_vol = ((ema_short - ema_short.shift(window)) / ema_short.shift(window)) * 100
     return round(float(chaikin_vol.iloc[-1]), 4)
 
 
@@ -696,9 +690,7 @@ def calculate_donchian_channels(
     }
 
 
-def calculate_price_percent_b(
-    prices: list[float], window: int = 20, num_std: int = 2
-) -> float:
+def calculate_price_percent_b(prices: list[float], window: int = 20, num_std: int = 2) -> float:
     """:param prices: list[float]:
     :param window: int:  (Default value = 20)
     :param num_std: int:  (Default value = 2)
