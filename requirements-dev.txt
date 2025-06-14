@@ -220,7 +220,7 @@ six==1.17.0
     # via python-dateutil
 stevedore==5.4.1
     # via bandit
-termcolor==2.3.0
+termcolor==2.5.0
     # via
     #   -r requirements-dev.in
     #   commitizen
