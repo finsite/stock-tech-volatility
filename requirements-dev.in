@@ -32,3 +32,7 @@ commitizen>=3.12
 mkdocs>=1.5
 mkdocs-material>=9.0
 termcolor==2.3.0
+
+# Security: Fix pip-audit vulnerabilities
+requests>=2.32.4
+urllib3>=2.5.0
