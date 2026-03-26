@@ -204,7 +204,7 @@ pyyaml-env-tag==1.1
     # via mkdocs
 questionary==2.1.0
     # via commitizen
-requests==2.32.4
+requests==2.33.0
     # via
     #   -r D:\git\stock-tech-volatility\requirements.in
     #   -r requirements-dev.in
