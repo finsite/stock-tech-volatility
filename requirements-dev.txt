@@ -176,7 +176,7 @@ pymdown-extensions==10.16
     # via mkdocs-material
 pyparsing==3.2.3
     # via matplotlib
-pytest==8.4.1
+pytest==9.0.3
     # via
     #   -r requirements-dev.in
     #   pytest-cov
