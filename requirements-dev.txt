@@ -172,7 +172,7 @@ pygments==2.19.2
     #   rich
 pyhcl==0.4.5
     # via hvac
-pymdown-extensions==10.16
+pymdown-extensions==10.21.3
     # via mkdocs-material
 pyparsing==3.2.3
     # via matplotlib
